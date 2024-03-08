@@ -169,10 +169,24 @@ document.addEventListener("DOMContentLoaded", function () {
   let sentWhatsappBtn = document.getElementById("submitbtn");
   sentWhatsappBtn.addEventListener("click", () => {
     let phoneNumber = document.getElementById("phoneNumber").value.trim();
-    let packageDays = document.querySelector(".packageDays").value;
+    let packageDays = document.getElementById("days").value;
+    let makkahHotel = document.getElementById("makkah-hotel-list").value;
+    let makkahHotelType = document.getElementById("makkah-hotel-star").value;
+    let nightsInMakkah = document.getElementById("nightsInMakkah").value;
+    let makkahHotelPrice = document.getElementById("makkahHotelPrice").value;
+    let madinahHotel = document.getElementById("madinah-hotel-list").value;
+    let madinahHotelType = document.getElementById("madinah-hotel-star").value;
+    let nightsInMadinah = document.getElementById("nightsInMadinah").value;
+    let madinahHotelPrice = document.getElementById("madinahHotelPrice").value;
+    let visaFee = document.getElementById("visaFee").value;
+    let airline = document.getElementById("airline-list").value;
+    let airlineClass = document.getElementById("airline-class").value;
+    let airlineFare = document.getElementById("airlineFare").value;
+    let numberOfPerson = document.getElementById("number-of-person").value;
+    let totalAmount = document.getElementById("totalAmount").value;
 
     // Phone number
-    let url = `https://wa.me/${phoneNumber}?text=Package :${packageDays}%0a`;
+    let url = `https://wa.me/${phoneNumber}?text=Package Days:${packageDays}%0aMakkah Hotel:${makkahHotel}%0aMakkah Hotel Type:${makkahHotelType}%0aNights In Makkah: ${nightsInMakkah}%0aMakkah Hotel Price: ${makkahHotelPrice}%0aMadinah Hotel: ${madinahHotel}%0aMadinah Hotel Type: ${madinahHotelType}%0aNights In Madinah: ${nightsInMadinah}%0aMadinah Hotel price: ${madinahHotelPrice}%0aVisa Fee: ${visaFee}%0aAirline: ${airline}%0aAirline Class: ${airlineClass}%0aAirline Fare: ${airlineFare}%0aNo. Of Person: ${numberOfPerson}%0a%0aTotal Package Amount: ${totalAmount}`;
 
     window.open(url, "_blank").focus();
   });

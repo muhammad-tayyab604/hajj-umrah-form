@@ -43,11 +43,11 @@ input[type=number] {
                             <label class="block uppercase tracking-wide text-xs font-bold">Package Days</label>
                             <div class="flex flex-col w-full md:flex-row md:items-center md:gap-5 gap-2">
                                 <select id="days"
-                                    class="packageDays text-sm rounded-lg border border-gray-300 block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
-                                    <option selected>15 Days</option>
-                                    <option value="21">21 Days</option>
-                                    <option value="28">28 Days</option>
-                                </select>
+                                class="packageDays text-sm rounded-lg border border-gray-300 block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
+                                <option selected>15 Days</option>
+                                <option value="21">21 Days</option>
+                                <option value="28">28 Days</option>
+                            </select>
                                 <button type="button"
                                     class=" flex justify-center items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-2 md:items-center mb-5 md:mb-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 text-gray-200"
                                     data-modal-target="modal-for-packageDays" data-modal-toggle="modal-for-packageDays">
@@ -91,7 +91,7 @@ input[type=number] {
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Makkah Hotels</label>
                                  <div class="flex flex-col md:flex-row md:items-center mb-5 md:mb-0 md:gap-5 gap-2">
                                 <select id="makkah-hotel-list"
-                                    class="text-sm rounded-lg border border-gray-300 block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
+                                    class=" text-sm rounded-lg border border-gray-300 block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
                                     <option selected>ConCord Mina Makkah</option>
                                     <option value="21">Anjum Makkah Hotel</option>
                                     <option value="28">Durrat Mina Hotel</option>
@@ -146,7 +146,7 @@ input[type=number] {
                             <div class="md:flex-1 md:pl-3">
                                 <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Nights In Makkah</label>
-                                 <input required type="number" class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" value="10" required placeholder="ex. 10">
+                                 <input required type="number" class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" value="10" required placeholder="ex. 10" id="nightsInMakkah">
                             </div>
                             <div class="md:flex-1 md:pl-3">
                                 <label
@@ -220,7 +220,7 @@ input[type=number] {
                             <div class="md:flex-1 md:pl-3">
                                 <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Nights In Madinah</label>
-                                 <input required type="number" class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" value="10" placeholder="ex. 10">
+                                 <input required type="number" id="nightsInMadinah" class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" value="10" placeholder="ex. 10">
                             </div>
                             <div class="md:flex-1 md:pl-3">
                                 <label
@@ -297,7 +297,7 @@ input[type=number] {
                         <div class="md:flex-1 pl-3 w-full">
                             <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Airline Class</label>
-                                 <select id="days"
+                                 <select id="airline-class"
                                     class="text-sm rounded-lg border border-gray-300 block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
                                     <option selected>First Class</option>
                                     <option value="21">Business Class</option>
@@ -315,7 +315,7 @@ input[type=number] {
                         <div class="md:flex-1 pl-3 w-full">
                             <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">No. Of Persons</label>
-                                 <input required type="number" class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g. 5" value="5">
+                                 <input required type="number" class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g. 5" value="5" id="number-of-person">
                         </div>
                     </div>
                 </div>
