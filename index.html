@@ -34,7 +34,7 @@ input[type=number] {
                 <h2 class="md:w-1/3 uppercase tracking-wide text-sm sm:text-lg mb-6">
                     Create New Package
                 </h2>
-                <button type="button" id="old-data-btn" class="w-full md:w-48 bg-blue-600 px-10 py-2 rounded-lg text-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-900 text-gray-200">Old Data</button>
+                <a href="/formData.html" target="_blank" id="old-data-btn" style="display: none;" class="w-full md:w-48 bg-blue-600 px-10 py-2 rounded-lg text-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-900 text-gray-200">Old Data</a>
             </div>
             <form>
                 <div class="md:flex mb-8">
@@ -240,7 +240,7 @@ input[type=number] {
                         <div class="md:flex-1">
                             <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Exchange Rate</label>
-                                 <input required type="number" class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="" value="78" disabled>
+                                 <input required type="number" class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="" value="78" id="exchangeRate">
                         </div>
                         <div class="md:flex-1 pl-3 w-full">
                             <label
@@ -256,9 +256,10 @@ input[type=number] {
                                     <select id="airline-list"
                                     class="text-sm rounded-lg border border-gray-300 block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
                                     <option selected>Emirates</option>
-                                    <option value="21">5 Star</option>
-                                    <option value="28">4 Star</option>
-                                    <option value="28">Shuttle</option>
+                                    <option value="Air Blue">Air Blue</option>
+                                    <option value="PIA">PIA</option>
+                                    <option value="28">Riyadh Air</option>
+                                    <option value="28">Nesma Airlines</option>
                                 </select>
                                  <button type="button"
                                     class=" flex justify-center items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-2 md:items-center mb-5 md:mb-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
@@ -325,13 +326,13 @@ input[type=number] {
                     <div class="md:flex w-full flex-row gap-4 mt-2 mb:mt-0 md:px-3">
                         <div class="md:flex-1">
                             <label
-                                    class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Makkah Hotel Price</label>
+                                    class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Makkah Price</label>
                                  <input type="number" class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="0" id="makkahHPDisabled" disabled>
                         </div>
                         <p class="flex justify-center items-center text-2xl">+</p>
                         <div class="md:flex-1 w-full">
                             <label
-                                    class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Madinah Hotel Price</label>
+                                    class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Madinah Price</label>
                                  <input type="text" class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="0" id="madinahHPDisabled" disabled>
                         </div>
                         <p class="flex justify-center items-center text-2xl">+</p>
@@ -379,7 +380,7 @@ input[type=number] {
                         <div class="md:flex-1 pl-3 w-full">
                             <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Total Package Amount</label>
-                                 <input type="text" disabled class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g. 5" value="0" id="totalAmount">
+                                 <input type="text" disabled class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="0" value="0" id="totalAmount">
                         </div>
                     </div>
                 </div>
