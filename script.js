@@ -1,9 +1,113 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Spliting Days and adding in nights and vice versa
+
+  document.getElementById("days").addEventListener("change", function () {
+    updateNightsBasedOnPackageDays(this.value);
+  });
+
+  document.getElementById("add-days").addEventListener("click", function () {
+    let customDaysInput = document.getElementById("custom-days");
+    let customDaysValue = parseInt(customDaysInput.value.trim());
+
+    // if (!isNaN(customDaysValue) && customDaysValue > 0) {
+    updateNightsBasedOnPackageDays(customDaysValue);
+    // splitingDaysNights();
+    // } else {
+    console.error("Invalid custom days input");
+    // }
+  });
+
+  function updateNightsBasedOnPackageDays(selectedPackageDays) {
+    let splitValue = Math.floor(selectedPackageDays / 2);
+    document.getElementById("nightsInMakkah").value = splitValue;
+    document.getElementById("nightsInMadinah").value =
+      selectedPackageDays - splitValue;
+  }
+
+  function splitingDaysNights() {
+    let nightsInMakkah = document.getElementById("nightsInMakkah").value;
+    let nightsInMadinah = document.getElementById("nightsInMadinah").value;
+
+    let customDaysValue = parseInt(nightsInMakkah) + parseInt(nightsInMadinah);
+
+    let selectElement = document.getElementById("days");
+
+    let dynamicOptions = Array.from(selectElement.options).slice(4);
+    dynamicOptions.forEach((option) => option.remove());
+
+    if (
+      nightsInMakkah.trim() === "" ||
+      isNaN(nightsInMakkah) ||
+      nightsInMadinah.trim() === "" ||
+      isNaN(nightsInMadinah)
+    ) {
+      let addedOption = document.createElement("option");
+      addedOption.value = `${0} Days`;
+      addedOption.textContent = "0 Days";
+      selectElement.appendChild(addedOption);
+      addedOption.selected = true;
+      return;
+    }
+
+    let addedOption = document.createElement("option");
+    addedOption.value = customDaysValue;
+    const daysText = String(customDaysValue).includes(" Days")
+      ? " Days"
+      : " Days";
+    addedOption.value = `${customDaysValue}${daysText}`;
+    addedOption.textContent = `${customDaysValue}${daysText}`;
+
+    // Append the new option
+    selectElement.appendChild(addedOption);
+
+    // Select the new option
+    addedOption.selected = true;
+
+    console.log(parseInt(nightsInMakkah) + parseInt(nightsInMadinah));
+  }
+
+  splitingDaysNights();
+
+  // Visa Check box logic
+  let visaLabelText = "";
+  const visaCheckbox = document.getElementById("visaCheck");
+  const visaLabel = document.querySelector('label[for="visaCheck"]');
+
+  visaCheckbox.addEventListener("change", () => {
+    visaLabelText = visaCheckbox.checked ? visaLabel.textContent : "";
+  });
+
+  // Airline Check box Logic
+  let airlineLabelText = "";
+  const airlineCheckBox = document.getElementById("airlineCheck");
+  const airlineLabel = document.querySelector('label[for="airlineCheck"]');
+
+  airlineCheckBox.addEventListener("change", () => {
+    airlineLabelText = airlineCheckBox.checked ? airlineLabel.textContent : "";
+  });
+
   // Expiry date enable disable
   let expDate = document.getElementById("expriyDate");
   expDate.addEventListener("click", () => {
     let expDateInput = document.getElementById("expriyDateInput");
     expDateInput.disabled = !expDateInput.disabled;
+  });
+
+  // phone number format and length validation
+  let phoneNumberInput = document.getElementById("phoneNumber");
+
+  phoneNumberInput.addEventListener("input", (e) => {
+    let inputValue = e.target.value;
+
+    let numericValue = inputValue.replace(/\D/g, "");
+
+    e.target.value = numericValue;
+
+    if (numericValue.length > 11) {
+      alert("Number should be 11 Characters");
+      e.target.value = numericValue.slice(0, 11);
+      return;
+    }
   });
 
   // ----------Adding other options logic start----------
@@ -25,15 +129,18 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 3000);
       return;
     }
+
     let addedOption = document.createElement("option");
 
     addedOption.value = customDaysValue;
-    const daysText = customDaysValue.includes("Days") ? "" : " Days";
+    const daysText = customDaysValue.includes(" Days") ? " Days" : " Days";
+    addedOption.value = `${customDaysValue}${daysText}`;
     addedOption.textContent = `${customDaysValue}${daysText}`;
     let selectElement = document.getElementById("days");
     selectElement.appendChild(addedOption);
     customDaysInput.value = "";
     addedOption.selected = true;
+    console.log(addedOption);
   });
 
   //   Event listner for adding makkah hotel
@@ -84,6 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let selectElement = document.getElementById("madinah-hotel-list");
     selectElement.appendChild(addedOption);
+    splitingDaysNights();
     customMadinahHotelInput.value = "";
     addedOption.selected = true;
   });
@@ -140,6 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Nights in makkah
   let nightsInMakkah = document.getElementById("nightsInMakkah");
   nightsInMakkah.addEventListener("input", () => {
+    splitingDaysNights();
     updateMakkahTotal();
     updateTotalAmount();
   });
@@ -147,6 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Nights in Madinah
   let nightsInMadinah = document.getElementById("nightsInMadinah");
   nightsInMadinah.addEventListener("input", () => {
+    splitingDaysNights();
     updateTotalAmount();
     updateMadinahTotal();
   });
@@ -155,6 +265,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let exchangeRate = document.getElementById("exchangeRate");
   exchangeRate.addEventListener("input", (e) => {
     visaFeeTotal();
+    updateMakkahTotal();
+    updateMadinahTotal();
     updateTotalAmount();
   });
 
@@ -284,7 +396,14 @@ document.addEventListener("DOMContentLoaded", function () {
   let sentWhatsappBtn = document.getElementById("submitbtn");
   sentWhatsappBtn.addEventListener("click", () => {
     let phoneNumber = document.getElementById("phoneNumber").value.trim();
-    let packageDays = document.getElementById("days").value;
+    let packageDaysElement = document.getElementById("days");
+    let packageDaysValue = packageDaysElement.value;
+
+    //  extracting the number from the string...
+    let numericPackageDays = parseInt(packageDaysValue);
+
+    let splitValue = Math.floor(numericPackageDays / 2);
+
     let makkahHotel = document.getElementById("makkah-hotel-list").value;
     let makkahHotelType = document.getElementById("makkah-hotel-star").value;
     let nightsInMakkah = document.getElementById("nightsInMakkah").value;
@@ -298,28 +417,26 @@ document.addEventListener("DOMContentLoaded", function () {
     let airlineClass = document.getElementById("airline-class").value;
     let airlineFare = document.getElementById("airlineFare").value;
     let numberOfPerson = document.getElementById("number-of-person").value;
+
     let expDate = document.getElementById("expriyDateInput").value;
     let totalAmount = document.getElementById("totalAmount").value;
 
     // Store form data in local storage
     let formData = {
-      phoneNumber,
-      packageDays,
-      makkahHotel,
-      makkahHotelType,
-      nightsInMakkah,
-      makkahHotelPrice,
-      madinahHotel,
-      madinahHotelType,
-      nightsInMadinah,
-      madinahHotelPrice,
-      visaFee,
-      airline,
-      airlineClass,
-      airlineFare,
-      numberOfPerson,
-      expDate,
-      totalAmount,
+      "Phone Number": phoneNumber,
+      Package: packageDaysElement,
+      "Makkah Hotel": `${makkahHotel} - ${makkahHotelType} - ${nightsInMakkah}`,
+      "Makkah Hotel Price(Per Night)": makkahHotelPrice,
+      "Madinah Hotel": `${madinahHotel} - ${madinahHotelType} - ${nightsInMadinah}`,
+      "Madinah Hotel Price(Per Night)": madinahHotelPrice,
+      "Visa Fee(Riyal)": visaFee,
+      Airline: `${airline}(${airlineClass})`,
+      "Airline Fare": airlineFare,
+      "Number of Persons": numberOfPerson,
+      "Visa Check": visaLabelText,
+      "Airline Check": airlineLabelText,
+      "Expiry Date": expDate,
+      "Total Package Amount": totalAmount,
     };
 
     let savedData = localStorage.getItem("formDataArray");
@@ -331,7 +448,13 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("formDataArray", JSON.stringify(formDataArray));
 
     // Phone number
-    let url = `https://wa.me/${phoneNumber}?text=Package: ${packageDays}%0aMakkah Hotel: ${makkahHotel} - ${makkahHotelType} - ${nightsInMakkah} Nights%0aMakkah Hotel Price: ${makkahHotelPrice}%0aMadinah Hotel: ${madinahHotel} - ${madinahHotelType} - ${nightsInMadinah} Nights%0aMadinah Hotel price: ${madinahHotelPrice}%0aAirline: ${airline}(${airlineClass})%0aAirline Fare: ${airlineFare}%0aNo. Of Person: ${numberOfPerson}%0aExpiry Date: ${expDate}%0a%0aTotal Package Amount: ${totalAmount}`;
+    let url = `https://wa.me/${phoneNumber}?text=Package: ${numericPackageDays} Days (${splitValue} %2B ${
+      numericPackageDays - splitValue
+    })%0aMakkah Hotel: ${makkahHotel} - ${makkahHotelType} - ${nightsInMakkah} Nights%0aMakkah Hotel Price: ${makkahHotelPrice}%0aMadinah Hotel: ${madinahHotel} - ${madinahHotelType} - ${nightsInMadinah} Nights%0aMadinah Hotel price: ${madinahHotelPrice}%0aAirline: ${airline}(${airlineClass})%0aAirline Fare: ${airlineFare}%0aNo. Of Person: ${numberOfPerson}%0a${
+      visaLabelText ? `Visa Check: ${visaLabelText}` : ""
+    }%0a${airlineLabelText ? `Airline Check: ${airlineLabelText}` : ""}%0a${
+      expDate ? `Expiry Date: ${expDate}` : ""
+    }%0a%0aTotal Package Amount: ${totalAmount}`;
 
     window.open(url, "_blank").focus();
   });
