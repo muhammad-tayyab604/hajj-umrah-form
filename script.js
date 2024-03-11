@@ -396,6 +396,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let sentWhatsappBtn = document.getElementById("submitbtn");
   sentWhatsappBtn.addEventListener("click", () => {
     let phoneNumber = document.getElementById("phoneNumber").value.trim();
+    console.log(phoneNumber);
     let packageDaysElement = document.getElementById("days");
     let packageDaysValue = packageDaysElement.value;
 
