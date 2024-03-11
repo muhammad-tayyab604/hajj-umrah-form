@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Expiry date enable disable
+  let expDate = document.getElementById("expriyDate");
+  expDate.addEventListener("click", () => {
+    let expDateInput = document.getElementById("expriyDateInput");
+    expDateInput.disabled = !expDateInput.disabled;
+  });
+
   // ----------Adding other options logic start----------
   let addDaysBtn = document.getElementById("add-days");
   let addMakkahHotelBtn = document.getElementById("addMakkahHotelBtn");
@@ -21,7 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let addedOption = document.createElement("option");
 
     addedOption.value = customDaysValue;
-    addedOption.textContent = `${customDaysValue} Days`;
+    const daysText = customDaysValue.includes("Days") ? "" : " Days";
+    addedOption.textContent = `${customDaysValue}${daysText}`;
     let selectElement = document.getElementById("days");
     selectElement.appendChild(addedOption);
     customDaysInput.value = "";
@@ -290,6 +298,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let airlineClass = document.getElementById("airline-class").value;
     let airlineFare = document.getElementById("airlineFare").value;
     let numberOfPerson = document.getElementById("number-of-person").value;
+    let expDate = document.getElementById("expriyDateInput").value;
     let totalAmount = document.getElementById("totalAmount").value;
 
     // Store form data in local storage
@@ -309,6 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
       airlineClass,
       airlineFare,
       numberOfPerson,
+      expDate,
       totalAmount,
     };
 
@@ -321,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("formDataArray", JSON.stringify(formDataArray));
 
     // Phone number
-    let url = `https://wa.me/${phoneNumber}?text=Package Days: ${packageDays}%0aMakkah Hotel: ${makkahHotel}%0aMakkah Hotel Type: ${makkahHotelType}%0aNights In Makkah: ${nightsInMakkah}%0aMakkah Hotel Price: ${makkahHotelPrice}%0aMadinah Hotel: ${madinahHotel}%0aMadinah Hotel Type: ${madinahHotelType}%0aNights In Madinah: ${nightsInMadinah}%0aMadinah Hotel price: ${madinahHotelPrice}%0aVisa Fee: ${visaFee}%0aAirline: ${airline}%0aAirline Class: ${airlineClass}%0aAirline Fare: ${airlineFare}%0aNo. Of Person: ${numberOfPerson}%0a%0aTotal Package Amount: ${totalAmount}`;
+    let url = `https://wa.me/${phoneNumber}?text=Package: ${packageDays}%0aMakkah Hotel: ${makkahHotel} - ${makkahHotelType} - ${nightsInMakkah} Nights%0aMakkah Hotel Price: ${makkahHotelPrice}%0aMadinah Hotel: ${madinahHotel} - ${madinahHotelType} - ${nightsInMadinah} Nights%0aMadinah Hotel price: ${madinahHotelPrice}%0aAirline: ${airline}(${airlineClass})%0aAirline Fare: ${airlineFare}%0aNo. Of Person: ${numberOfPerson}%0aExpiry Date: ${expDate}%0a%0aTotal Package Amount: ${totalAmount}`;
 
     window.open(url, "_blank").focus();
   });
