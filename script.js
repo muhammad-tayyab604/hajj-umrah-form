@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const daysText = String(customDaysValue).includes(" Days")
       ? " Days"
       : " Days";
-    // addedOption.value = `${customDaysValue}${daysText}`;
     addedOption.textContent = `${customDaysValue}${daysText}`;
 
     // Append the new option
@@ -62,8 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Select the new option
     addedOption.selected = true;
-
-    // console.log(parseInt(nightsInMakkah) + parseInt(nightsInMadinah));
   }
 
   splitingDaysNights();
@@ -412,9 +409,9 @@ document.addEventListener("DOMContentLoaded", function () {
       Airline: `${airline}(${airlineClass})`,
       "Airline Fare": airlineFare,
       "Number of Persons": numberOfPerson,
-      "Visa Check": visaLabelText,
-      "Airline Check": airlineLabelText,
-      "Expiry Date": expDate,
+      "Visa Check": `${visaLabelText ? visaLabelText : "Not Checked"}`,
+      "Airline Check": `${airlineLabelText ? airlineLabelText : "Not Checked"}`,
+      "Expiry Date": `${expDate ? expDate : "Not Available"}`,
       "Total Package Amount": totalAmount,
     };
 
