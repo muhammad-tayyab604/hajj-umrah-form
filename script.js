@@ -94,21 +94,28 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // phone number format and length validation
-  // let phoneNumberInput = document.getElementById("phoneNumber");
+  document
+    .getElementById("phoneNumber")
+    .addEventListener("input", function (event) {
+      // Get the input value
+      let inputValue = event.target.value;
 
-  // phoneNumberInput.addEventListener("input", (e) => {
-  //   let inputValue = e.target.value;
+      // Remove any non-digit characters
+      let phoneNumber = inputValue.replace(/\D/g, "");
 
-  //   let numericValue = inputValue.replace(/\D/g, "");
+      if (phoneNumber.length > 12) {
+        alert("Number should be 11 Characters");
+        phoneNumber = phoneNumber.slice(0, 12);
+      }
 
-  //   e.target.value = numericValue;
-
-  //   if (numericValue.length > 11) {
-  //     alert("Number should be 11 Characters");
-  //     e.target.value = numericValue.slice(0, 11);
-  //     return;
-  //   }
-  // });
+      // Check if the phone number starts with +92 and has 10 digits
+      if (phoneNumber.startsWith("92") && phoneNumber.length === 12) {
+        // Format the phone number as +92XXXXXXXXX
+        event.target.value = "+92" + phoneNumber.slice(2);
+      } else {
+        event.target.value = inputValue;
+      }
+    });
 
   // ----------Adding other options logic start----------
   let addDaysBtn = document.getElementById("add-days");
@@ -396,10 +403,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let sentWhatsappBtn = document.getElementById("submitbtn");
   sentWhatsappBtn.addEventListener("click", () => {
     let phoneNumber = document.getElementById("phoneNumber").value.trim();
-    let countryCode = 92;
-    if (!phoneNumber.startsWith(countryCode)) {
-      phoneNumber = countryCode + phoneNumber;
-    }
     let packageDaysElement = document.getElementById("days");
     let packageDaysValue = packageDaysElement.value;
 
