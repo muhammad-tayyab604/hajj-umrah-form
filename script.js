@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // phone number format and length validation
-  let phoneNumberInput = document.getElementById("phoneNumber");
+  // let phoneNumberInput = document.getElementById("phoneNumber");
 
   // phoneNumberInput.addEventListener("input", (e) => {
   //   let inputValue = e.target.value;
@@ -103,9 +103,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //   e.target.value = numericValue;
 
-  //   if (numericValue.length > 12) {
+  //   if (numericValue.length > 11) {
   //     alert("Number should be 11 Characters");
-  //     e.target.value = numericValue.slice(0, 12);
+  //     e.target.value = numericValue.slice(0, 11);
   //     return;
   //   }
   // });
@@ -396,7 +396,10 @@ document.addEventListener("DOMContentLoaded", function () {
   let sentWhatsappBtn = document.getElementById("submitbtn");
   sentWhatsappBtn.addEventListener("click", () => {
     let phoneNumber = document.getElementById("phoneNumber").value.trim();
-    console.log(phoneNumber);
+    let countryCode = 92;
+    if (!phoneNumber.startsWith(countryCode)) {
+      phoneNumber = countryCode + phoneNumber;
+    }
     let packageDaysElement = document.getElementById("days");
     let packageDaysValue = packageDaysElement.value;
 
