@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Store form data in local storage
     let formData = {
       "Phone Number": phoneNumber,
-      Package: packageDaysValue,
+      Package: `${packageDaysValue} Days`,
       "Makkah Hotel": `${makkahHotel} - ${makkahHotelType} - ${nightsInMakkah}`,
       "Makkah Hotel Price(Per Night)": makkahHotelPrice,
       "Madinah Hotel": `${madinahHotel} - ${madinahHotelType} - ${nightsInMadinah}`,
@@ -419,11 +419,8 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     let savedData = localStorage.getItem("formDataArray");
-
     let formDataArray = savedData ? JSON.parse(savedData) : [];
-
     formDataArray.push(formData);
-
     localStorage.setItem("formDataArray", JSON.stringify(formDataArray));
 
     // Phone number
