@@ -400,7 +400,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Store form data in local storage
     let formData = {
       "Phone Number": phoneNumber,
-      Package: `${packageDaysValue} Days`,
+      Package: `${packageDaysValue} Days (${splitValue} + ${
+        numericPackageDays - splitValue
+      })`,
       "Makkah Hotel": `${makkahHotel} - ${makkahHotelType} - ${nightsInMakkah} Nights`,
       "Makkah Hotel Price(Per Night)": `${makkahHotelPrice}`,
       "Madinah Hotel": `${madinahHotel} - ${madinahHotelType} - ${nightsInMadinah} Nights`,
