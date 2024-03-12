@@ -404,9 +404,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let formData = {
       "Phone Number": phoneNumber,
       Package: `${packageDaysValue} Days`,
-      "Makkah Hotel": `${makkahHotel} - ${makkahHotelType} - ${nightsInMakkah}`,
-      "Makkah Hotel Price(Per Night)": makkahHotelPrice,
-      "Madinah Hotel": `${madinahHotel} - ${madinahHotelType} - ${nightsInMadinah}`,
+      "Makkah Hotel": `${makkahHotel} - ${makkahHotelType} - ${nightsInMakkah} Nights`,
+      "Makkah Hotel Price(Per Night)": `${makkahHotelPrice}`,
+      "Madinah Hotel": `${madinahHotel} - ${madinahHotelType} - ${nightsInMadinah} Nights`,
       "Madinah Hotel Price(Per Night)": madinahHotelPrice,
       "Visa Fee(Riyal)": visaFee,
       Airline: `${airline}(${airlineClass})`,
