@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Spliting Days and adding in nights and vice versa
-
   document.getElementById("days").addEventListener("change", function () {
     updateNightsBasedOnPackageDays(this.value);
   });
@@ -422,7 +421,7 @@ document.addEventListener("DOMContentLoaded", function () {
     formDataArray.push(formData);
     localStorage.setItem("formDataArray", JSON.stringify(formDataArray));
 
-    // Phone number
+    // send form data to Phone number
     let url = `https://wa.me/${phoneNumber}?text=Package: ${numericPackageDays} Days (${splitValue} %2B ${
       numericPackageDays - splitValue
     })%0aMakkah Hotel: ${makkahHotel} - ${makkahHotelType} - ${nightsInMakkah} Nights%0aMakkah Hotel Price: ${makkahHotelPrice}%0aMadinah Hotel: ${madinahHotel} - ${madinahHotelType} - ${nightsInMadinah} Nights%0aMadinah Hotel price: ${madinahHotelPrice}%0aAirline: ${airline}(${airlineClass})%0aAirline Fare: ${airlineFare}%0aNo. Of Person: ${numberOfPerson}%0a${
