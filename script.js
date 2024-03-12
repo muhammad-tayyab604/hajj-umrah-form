@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let customDaysInput = document.getElementById("custom-days");
     let customDaysValue = parseInt(customDaysInput.value.trim());
 
-    // if (!isNaN(customDaysValue) && customDaysValue > 0) {
-    updateNightsBasedOnPackageDays(customDaysValue);
-    // splitingDaysNights();
-    // } else {
-    console.error("Invalid custom days input");
-    // }
+    if (!isNaN(customDaysValue) && customDaysValue > 0) {
+      updateNightsBasedOnPackageDays(customDaysValue);
+      splitingDaysNights();
+    } else {
+      console.error("Invalid custom days input");
+    }
   });
 
   function updateNightsBasedOnPackageDays(selectedPackageDays) {
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const daysText = String(customDaysValue).includes(" Days")
       ? " Days"
       : " Days";
-    addedOption.value = `${customDaysValue}${daysText}`;
+    // addedOption.value = `${customDaysValue}${daysText}`;
     addedOption.textContent = `${customDaysValue}${daysText}`;
 
     // Append the new option
@@ -118,37 +118,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   // ----------Adding other options logic start----------
-  let addDaysBtn = document.getElementById("add-days");
   let addMakkahHotelBtn = document.getElementById("addMakkahHotelBtn");
   let addMadinahHotelBtn = document.getElementById("addMadinahHotelBtn");
   let addAirlineBtn = document.getElementById("addAirlineBtn");
-
-  //   Event Listner for Adding days
-  addDaysBtn.addEventListener("click", () => {
-    let customDaysInput = document.getElementById("custom-days");
-    let customDaysValue = customDaysInput.value.trim();
-    let daysError = document.getElementById("days-error");
-
-    if (customDaysValue === "" || isNaN(customDaysValue)) {
-      daysError.style.display = "block";
-      setTimeout(() => {
-        daysError.style.display = "none";
-      }, 3000);
-      return;
-    }
-
-    let addedOption = document.createElement("option");
-
-    addedOption.value = customDaysValue;
-    const daysText = customDaysValue.includes(" Days") ? " Days" : " Days";
-    addedOption.value = `${customDaysValue}${daysText}`;
-    addedOption.textContent = `${customDaysValue}${daysText}`;
-    let selectElement = document.getElementById("days");
-    selectElement.appendChild(addedOption);
-    customDaysInput.value = "";
-    addedOption.selected = true;
-    console.log(addedOption);
-  });
 
   //   Event listner for adding makkah hotel
   addMakkahHotelBtn.addEventListener("click", () => {
