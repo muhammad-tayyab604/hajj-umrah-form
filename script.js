@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Select the new option
     addedOption.selected = true;
 
-    console.log(parseInt(nightsInMakkah) + parseInt(nightsInMadinah));
+    // console.log(parseInt(nightsInMakkah) + parseInt(nightsInMadinah));
   }
 
   splitingDaysNights();

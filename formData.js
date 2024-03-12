@@ -1,12 +1,9 @@
 // Retrieve data from local storage
 let storedData = localStorage.getItem("formDataArray");
-
-// Check if there is any stored data
+let EmptyStorage = document.getElementById("EmptyStorage");
 if (storedData) {
-  // Parse the JSON string to convert it back to an array
   let formDataArray = JSON.parse(storedData);
 
-  // Access the element where you want to display the data
   let displayElement = document.getElementById("displayData");
 
   // Iterate through formDataArray and display each object in cards
@@ -26,5 +23,5 @@ if (storedData) {
     displayElement.appendChild(card);
   });
 } else {
-  console.log("No stored data found");
+  EmptyStorage.style.display = "block";
 }
