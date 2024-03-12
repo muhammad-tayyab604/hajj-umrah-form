@@ -96,19 +96,19 @@ document.addEventListener("DOMContentLoaded", function () {
   // phone number format and length validation
   let phoneNumberInput = document.getElementById("phoneNumber");
 
-  phoneNumberInput.addEventListener("input", (e) => {
-    let inputValue = e.target.value;
+  // phoneNumberInput.addEventListener("input", (e) => {
+  //   let inputValue = e.target.value;
 
-    let numericValue = inputValue.replace(/\D/g, "");
+  //   let numericValue = inputValue.replace(/\D/g, "");
 
-    e.target.value = numericValue;
+  //   e.target.value = numericValue;
 
-    if (numericValue.length > 11) {
-      alert("Number should be 11 Characters");
-      e.target.value = numericValue.slice(0, 11);
-      return;
-    }
-  });
+  //   if (numericValue.length > 12) {
+  //     alert("Number should be 11 Characters");
+  //     e.target.value = numericValue.slice(0, 12);
+  //     return;
+  //   }
+  // });
 
   // ----------Adding other options logic start----------
   let addDaysBtn = document.getElementById("add-days");
