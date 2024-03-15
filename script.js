@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let selectElement = document.getElementById("days");
 
-    let dynamicOptions = Array.from(selectElement.options).slice(4);
+    let dynamicOptions = Array.from(selectElement.options).slice(3);
     dynamicOptions.forEach((option) => option.remove());
 
     if (
@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
       : " Days";
     addedOption.textContent = `${customDaysValue}${daysText}`;
 
-    // Append the new option
-    selectElement.appendChild(addedOption);
+    // Insert the new option before the first option in the select element
+    selectElement.insertBefore(addedOption, selectElement.firstChild);
 
     // Select the new option
     addedOption.selected = true;
@@ -370,6 +370,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //   Send Form data to whatsapp
   let sentWhatsappBtn = document.getElementById("submitbtn");
   sentWhatsappBtn.addEventListener("click", () => {
+    let pesengerName = document.getElementById("pesengerName").value;
     let phoneNumber = document.getElementById("phoneNumber").value.trim();
     let packageDaysElement = document.getElementById("days");
     let packageDaysValue = packageDaysElement.value;
@@ -380,11 +381,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let splitValue = Math.floor(numericPackageDays / 2);
 
     let makkahHotel = document.getElementById("makkah-hotel-list").value;
-    let makkahHotelType = document.getElementById("makkah-hotel-star").value;
+    // let makkahHotelType = document.getElementById("makkah-hotel-star").value;
     let nightsInMakkah = document.getElementById("nightsInMakkah").value;
     let makkahHotelPrice = document.getElementById("makkahHotelPrice").value;
     let madinahHotel = document.getElementById("madinah-hotel-list").value;
-    let madinahHotelType = document.getElementById("madinah-hotel-star").value;
+    // let madinahHotelType = document.getElementById("madinah-hotel-star").value;
     let nightsInMadinah = document.getElementById("nightsInMadinah").value;
     let madinahHotelPrice = document.getElementById("madinahHotelPrice").value;
     let visaFee = document.getElementById("visaFee").value;
@@ -398,13 +399,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Store form data in local storage
     let formData = {
+      "Pesenger's Name": pesengerName,
       "Phone Number": phoneNumber,
       Package: `${packageDaysValue} Days (${splitValue} + ${
         numericPackageDays - splitValue
       })`,
-      "Makkah Hotel": `${makkahHotel} - ${makkahHotelType} - ${nightsInMakkah} Nights`,
+      "Makkah Hotel": `${makkahHotel} - ${nightsInMakkah} Nights`,
       "Makkah Hotel Price(Per Night)": `${makkahHotelPrice}`,
-      "Madinah Hotel": `${madinahHotel} - ${madinahHotelType} - ${nightsInMadinah} Nights`,
+      "Madinah Hotel": `${madinahHotel} - ${nightsInMadinah} Nights`,
       "Madinah Hotel Price(Per Night)": madinahHotelPrice,
       "Visa Fee(Riyal)": visaFee,
       Airline: `${airline}(${airlineClass})`,
@@ -422,9 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("formDataArray", JSON.stringify(formDataArray));
 
     // send form data to Phone number
-    let url = `https://wa.me/${phoneNumber}?text=Package: ${numericPackageDays} Days (${splitValue} %2B ${
-      numericPackageDays - splitValue
-    })%0aMakkah Hotel: ${makkahHotel} - ${makkahHotelType} - ${nightsInMakkah} Nights%0aMakkah Hotel Price: ${makkahHotelPrice}%0aMadinah Hotel: ${madinahHotel} - ${madinahHotelType} - ${nightsInMadinah} Nights%0aMadinah Hotel price: ${madinahHotelPrice}%0aAirline: ${airline}(${airlineClass})%0aAirline Fare: ${airlineFare}%0aNo. Of Person: ${numberOfPerson}%0a${
+    let url = `https://wa.me/${phoneNumber}?text=Pesenger's Name: ${pesengerName}%0aPackage: ${numericPackageDays} Days%0aMakkah Hotel: ${makkahHotel} - ${nightsInMakkah} Nights%0aMakkah Hotel Price: ${makkahHotelPrice}%0aMadinah Hotel: ${madinahHotel} - ${nightsInMadinah} Nights%0aMadinah Hotel price: ${madinahHotelPrice}%0aAirline: ${airline}(${airlineClass} - ${airlineFare})%0aNo. Of Person: ${numberOfPerson}%0a${
       visaLabelText ? `Visa Check: ${visaLabelText}` : ""
     }%0a${airlineLabelText ? `Airline Check: ${airlineLabelText}` : ""}%0a${
       expDate ? `Expiry Date: ${expDate}` : ""

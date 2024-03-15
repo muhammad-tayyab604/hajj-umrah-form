@@ -48,13 +48,23 @@
                 <div class="md:flex mb-8">
                     <div class="w-full mt-2 md:mt-0 md:px-3">
                         <div class="mb-4">
-                            <label class="block uppercase tracking-wide text-xs font-bold">Package Days</label>
+                            <div class="md:flex">
+                                <div class="md:flex-1 pr-3">
+                                    <label class="block uppercase tracking-wide text-xs font-bold">Pesenger Name</label>
+                            <div class="flex flex-col w-full md:flex-row md:items-center md:gap-5 gap-2">
+                                 <input required type="text"
+                                    class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g. Muhammad..." id="pesengerName">
+                            </div>
+                            </div>
+                            <div class="md:flex-1">
+                                <label class="block uppercase tracking-wide text-xs font-bold">Package Days</label>
                             <div class="flex flex-col w-full md:flex-row md:items-center md:gap-5 gap-2">
                                 <select id="days"
                                     class="packageDays text-sm rounded-lg border block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500">
-                                    <option disabled selected>Select Package Days</option>
-                                    <option selected value="15">15 Days</option>
+                                    <!-- <option disabled selected>Select Package Days</option> -->
+                                    <!-- <option selected value="15">15 Days</option> -->
                                     <option value="21">21 Days</option>
+                                    <option value="28">28 Days</option>
                                 </select>
                                 <button type="button" id="custom-days-btn"
                                     class="flex justify-center items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center gap-2 md:items-center mb-5 md:mb-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 text-gray-200"
@@ -64,6 +74,8 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                                 </button>
+                                </div>
+                            </div>
                             </div>
                             <!-- Modal -->
                             <div id="modal-for-packageDays" tabindex="-1"
@@ -105,11 +117,10 @@
                                 <div class="flex flex-col md:flex-row md:items-center mb-5 md:mb-0 md:gap-5 gap-2">
                                     <select id="makkah-hotel-list"
                                         class=" text-sm rounded-lg border border-gray-600 block w-[100%] p-2.5 bg-gray-700 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
-                                        <option selected>ConCord Mina Makkah</option>
-                                        <option value="21">Anjum Makkah Hotel</option>
-                                        <option value="28">Durrat Mina Hotel</option>
-                                        <option value="28">Marriott Makkah Jabal Omar</option>
-                                        <option value="28">Elaf Kinda Hotel Makkah</option>
+                                        <option selected value="Anjum Makkah Hotel - 7 Star">Anjum Makkah Hotel - 7 Star</option>
+                                        <option value="Durrat Mina Hotel - 5 Star">Durrat Mina Hotel - 5 Star</option>
+                                        <option value="Marriott Makkah Jabal Omar - 4 Star">Marriott Makkah Jabal Omar - 4 Star</option>
+                                        <option value="Elaf Kinda Hotel Makkah - Shuttle">Elaf Kinda Hotel Makkah - Shuttle</option>
                                     </select>
                                     <button type="button"
                                         class=" flex justify-center items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center gap-2 md:items-center mb-5 md:mb-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
@@ -146,7 +157,8 @@
                                 </div>
                                 <!-- Modal -->
                             </div>
-                            <div class="md:flex-1 md:pl-3">
+                            <!-- akkah hotel Type -->
+                            <!-- <div class="md:flex-1 md:pl-3">
                                 <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Makkah
                                     Hotel Type</label>
@@ -157,19 +169,19 @@
                                     <option value="4 Star">4 Star</option>
                                     <option value="Shuttle">Shuttle</option>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="md:flex-1 md:pl-3">
                                 <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Nights
                                     In Makkah</label>
                                 <input required type="number"
                                     class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
-                                    value="14" placeholder="ex. 10" id="nightsInMakkah">
+                                    value="8" placeholder="ex. 10" id="nightsInMakkah">
                             </div>
                             <div class="md:flex-1 md:pl-3">
                                 <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Makkah
-                                    Hotel Per Night Price(Riyal)</label>
+                                    Hotel Per Night Price (Riyal)</label>
                                 <input required type="number"
                                     class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
                                     placeholder="ex. 100(Riyals)" value="2800" id="makkahHotelPrice">
@@ -185,11 +197,10 @@
                                 <div class="flex flex-col md:flex-row md:items-center mb-5 md:mb-0 md:gap-5 gap-2">
                                     <select id="madinah-hotel-list"
                                         class="text-sm rounded-lg border block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
-                                        <option selected>Dar Al Hijra InterContinental</option>
-                                        <option value="21">Pullman Zamzam Madina</option>
-                                        <option value="28">Shahd al Madinah</option>
-                                        <option value="28">Frontel Al Harithia Hotel</option>
-                                        <option value="28">Madinah Movenpick Hotel</option>
+                                        <option value="Pullman Zamzam Madina - 7 Start">Pullman Zamzam Madina - 7 Start</option>
+                                        <option value="Shahd al Madinah - 5 Star">Shahd al Madinah - 5 Star</option>
+                                        <option value="Frontel Al Harithia Hotel - 4 Star">Frontel Al Harithia Hotel - 4 Star</option>
+                                        <option value="Madinah Movenpick Hotel - Shuttle">Madinah Movenpick Hotel - Shuttle</option>
                                     </select>
                                     <button type="button"
                                         class=" flex justify-center items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center gap-2 md:items-center mb-5 md:mb-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
@@ -227,7 +238,8 @@
                                 </div>
                                 <!-- Modal -->
                             </div>
-                            <div class="md:flex-1 md:pl-3">
+                            <!-- Madinah Hotel Type -->
+                            <!-- <div class="md:flex-1 md:pl-3">
                                 <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Madinah
                                     Hotel Type</label>
@@ -239,14 +251,14 @@
                                     <option value="Shuttle">Shuttle</option>
                                 </select>
 
-                            </div>
+                            </div> -->
                             <div class="md:flex-1 md:pl-3">
                                 <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Nights
                                     In Madinah</label>
                                 <input required type="number" id="nightsInMadinah"
                                     class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
-                                    value="14" placeholder="ex. 10">
+                                    value="7" placeholder="ex. 10">
                             </div>
                             <div class="md:flex-1 md:pl-3">
                                 <label
@@ -447,6 +459,13 @@
                                 class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Airline</label>
                         </div>
                     </div>
+                     <div class="md:w-96 w-full mt-4">
+                        <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">WhatsApp
+                            Number</label>
+                        <input required type="text" id="phoneNumber"
+                            class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="92XXXXXXXXX" value="+923005115035">
+                    </div>
                     <div class="md:w-96 w-full mt-4 mr-4">
                         <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Expiry
                             Date</label>
@@ -458,13 +477,7 @@
                                 placeholder="Airline Fare(RS)" value="+923005115035">
                         </div>
                     </div>
-                    <div class="md:w-96 w-full mt-4">
-                        <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">WhatsApp
-                            Number</label>
-                        <input required type="text" id="phoneNumber"
-                            class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="92XXXXXXXXX" value="+923005115035">
-                    </div>
+                   
                     <div class="md:flex-1 px-3 text-center md:text-right">
                         <button type="button" id="submitbtn"
                             class="bg-blue-600 text-xl font-bold text-gray-200 px-10 py-2 mt-4 rounded-lg hover:bg-blue-700 ring-offset-2 focus:ring-2 focus:ring-blue-400">
