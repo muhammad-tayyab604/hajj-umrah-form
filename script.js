@@ -511,7 +511,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (
       parseInt(airlineFare) === 0 ||
       (parseInt(visaFee) === 0 && parseInt(priceOfMakkahHotel) === 0) ||
-      parseInt(priceOfMadinahHotel) === 0
+      parseInt(priceOfMadinahHotel) === 0 ||
+      (parseInt(nightsInMadinah) === 0 && parseInt(nightsInMakkah) === 0)
     ) {
       alert("Please ensure that you have entered all the fields .");
       return; // Exit the function, preventing form submission
