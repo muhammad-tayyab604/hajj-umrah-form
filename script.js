@@ -546,15 +546,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let formData = {
       "Phone Number ": phoneNumber,
-      Package: `${packageDaysValue} Days (${splitValue} + ${
-        numericPackageDays - splitValue
-      })`,
+      Package: `${packageDaysValue})`,
       "Makkah Hotel ": `${makkahHotel} - ${nightsInMakkah} Nights`,
-      "Makkah Hotel Price(Per Night) ": `${makkahHotelPrice}`,
       "Madinah Hotel ": `${madinahHotel} - ${nightsInMadinah} Nights`,
+      "Makkah Hotel Price(Per Night) ": `${makkahHotelPrice}`,
       "Madinah Hotel Price(Per Night) ": madinahHotelPrice,
       "Number of Persons ": numberOfPerson,
-      // "Expiry Date ": `${expDate ? expDate : "Not Selected"}`,
       "Total Package Amount ": totalAmount,
     };
 
