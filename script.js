@@ -538,24 +538,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // send form data to Phone number
     let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      `${selectedPassenger ? `Dear ${selectedPassenger}` : ""} 
-    Package: ${numericPackageDays} Days
-    Makkah Hotel: ${makkahHotel} - (${nightsInMakkah} Nights)
-    Madinah Hotel: ${madinahHotel} - (${nightsInMadinah} Nights)
-    ${includeHotelPrices ? `Makkah Hotel Price: ${makkahHotelPrice} (PKR)` : ""}
-    ${
-      includeHotelPrices
-        ? `Madinah Hotel Price: ${madinahHotelPrice} (PKR)`
-        : ""
-    }
-    Airline: ${airline} (${airlineClass})
-    ${selectedAirline ? `Airline Fare: ${airlineFare} (PKR)` : ""}
-    ${visaCheck ? `Visa Fee: ${visaCheck} (PKR)` : ""}
-    No. Of Person: ${numberOfPerson}
-    Total Package Amount: ${totalAmount} (PKR)
-    ${expDate ? `Package Expires on: ${formatDate(expDate)}` : ""}
-    `
+      `${selectedPassenger ? `Dear ${selectedPassenger}` : ""}` +
+        `<b>Package:</b> ${numericPackageDays} Days` +
+        `<b>Makkah Hotel:</b> ${makkahHotel} - (${nightsInMakkah} Nights)` +
+        `<b>Madinah Hotel:</b> ${madinahHotel} - (${nightsInMadinah} Nights)` +
+        `${
+          includeHotelPrices
+            ? `<b>Makkah Hotel Price:</b> ${makkahHotelPrice} (PKR)`
+            : ""
+        }` +
+        `${
+          includeHotelPrices
+            ? `<b>Madinah Hotel Price:</b> ${madinahHotelPrice} (PKR)`
+            : ""
+        }` +
+        `<b>Airline:</b> ${airline} (${airlineClass})` +
+        `${selectedAirline ? `*Airline Fare:* ${airlineFare} (PKR)` : ""}` +
+        `${visaCheck ? `Visa Fee: ${visaCheck} (PKR)` : ""}` +
+        `No. Of Person: ${numberOfPerson}` +
+        `Total Package Amount: ${totalAmount} (PKR)\n\n` +
+        `${expDate ? `Package Expires on: ${formatDate(expDate)}` : ""}`
     )}`;
+
     window.open(url, "_blank").focus();
   });
 });
