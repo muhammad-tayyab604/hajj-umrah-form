@@ -65,8 +65,6 @@
                                     <div class="flex flex-col w-full md:flex-row md:items-center md:gap-5 gap-2">
                                         <select id="days"
                                             class="packageDays text-sm rounded-lg border block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500">
-                                            <!-- <option disabled selected>Select Package Days</option> -->
-                                            <!-- <option selected value="15">15 Days</option> -->
                                             <option value="21">21 Days</option>
                                             <option value="28">28 Days</option>
                                         </select>
@@ -350,11 +348,11 @@
                     </div>
                     <div class="md:flex w-full flex-row mt-2 mb:mt-0 md:px-3">
                         <div class="md:flex-1">
-                            <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Airline
+                            <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Ticket
                                 Fare (PKR)</label>
                             <input required type="number"
                                 class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Airline Fare(RS)" value="78000" id="airlineFare">
+                                placeholder="Ticket Fare(RS)" value="78000" id="airlineFare">
                         </div>
                         <div class="md:flex-1 md:pl-3 w-full">
                             <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">No. Of
@@ -406,7 +404,7 @@
                             <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Visa
                                 Fee (PKR)</label>
                             <input type="text"
-                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-600 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
+                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-600 border-gray-700 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="0" id="visaFeeDisabled" disabled>
                         </div>
                         <p class="flex justify-center items-center text-xl">+</p>
@@ -415,8 +413,8 @@
                     <div class="md:flex w-full flex-row justify-center items-center gap-4 mt-2 mb:mt-0 md:px-3">
                         <div class="md:flex-1 w-full">
 
-                            <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Ariline
-                                Fares (PKR)</label>
+                            <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Ticket
+                                Fare (PKR)</label>
                             <input type="text"
                                 class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-600 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="0" id="airlineFareDisabled" disabled>
@@ -424,20 +422,20 @@
                         <div class="">
                             <p class="flex justify-center items-center text-xl">+</p>
                         </div>
-                        <div class="md:flex-1 w-full">
+                        <div class=" md:w-[26.7rem] mr-3 flex-1">
                             <label
-                                class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Adjustment</label>
-                            <input type="text"
-                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-600 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="0" id="adjustment">
+                                class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Other Adjustments</label>
+                            <input type="number"
+                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="Adjustment" value="0" id="adjustment">
                         </div>
-                        <div class="">
+                        <!-- <div class=""> -->
+                            <!-- </div> -->
+                            
                             <p class="flex justify-center items-center text-xl">=</p>
-                        </div>
-
-                        <div class="md:flex-1 md:pl-3 w-full">
-                            <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Total
-                                Package Amount (PKR)</label>
+                            <div class="md:flex-1 md:pl-3">
+                                <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Total
+                                    Package Amount (PKR)</label>
                             <input type="text" disabled
                                 class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-600 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="0" value="0" id="totalAmount">
@@ -465,7 +463,7 @@
                             <input type="checkbox" id="airlineCheck"
                                 class="block h-5 w-5 text-sm rounded-lg border bg-blue-700 focus:ring-4 outline-none focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
                             <label for="airlineCheck"
-                                class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Airline</label>
+                                class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Ticket Fare (PKR)</label>
                         </div>
                         <div class="md:w-96 w-full flex items-center gap-2 mt-4 mr-4">
                             <input type="checkbox" id="visaCheck"
@@ -490,7 +488,7 @@
                                 class="block h-5 w-5 text-sm rounded-lg outline-none bg-blue-700 focus:ring-4 border-none focus:ring-blue-500 focus:border-blue-500">
                             <input type="date" disabled id="expriyDateInput"
                                 class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 text-white border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Airline Fare(PKR)" value="+923005115035">
+                                placeholder="" value="+923005115035">
                         </div>
                     </div>
 

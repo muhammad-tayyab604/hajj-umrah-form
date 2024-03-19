@@ -20,6 +20,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Add input event listener to custom-days input field for numeric validation
+  document
+    .getElementById("custom-days")
+    .addEventListener("input", function (event) {
+      // Get the input value
+      let inputValue = event.target.value;
+
+      // Remove any non-digit characters
+      let numericValue = inputValue.replace(/\D/g, "");
+
+      // Update the input field with the filtered numeric value
+      event.target.value = numericValue;
+    });
+
   // Function to format date from mm/dd/yyyy to dd/mm/yyyy
   function formatDate(inputDate) {
     // Split the date into month, day, and year parts
@@ -457,6 +471,9 @@ document.addEventListener("DOMContentLoaded", function () {
   //   Send Form data to whatsapp
   let sentWhatsappBtn = document.getElementById("submitbtn");
   sentWhatsappBtn.addEventListener("click", () => {
+    let priceOfMakkahHotel = document.getElementById("makkahHotelPrice").value;
+    let priceOfMadinahHotel =
+      document.getElementById("madinahHotelPrice").value;
     let pesengerName = document.getElementById("pesengerName").value;
     let phoneNumber = document.getElementById("phoneNumber").value.trim();
     let packageDaysElement = document.getElementById("days");
@@ -489,6 +506,34 @@ document.addEventListener("DOMContentLoaded", function () {
     // Check if the "Hotel Prices (PKR)" checkbox is checked
     let hotelPricesCheck = document.getElementById("hotelPricesCheck");
     let includeHotelPrices = hotelPricesCheck.checked;
+
+    // logic for ticket fare or visa fee or madinah and makkah hotel price is = 0
+    if (
+      parseInt(airlineFare) === 0 ||
+      parseInt(visaFee) === 0 ||
+      parseInt(priceOfMakkahHotel) === 0 ||
+      parseInt(priceOfMadinahHotel) === 0
+    ) {
+      alert("Please ensure that you have entered all the fields .");
+      return; // Exit the function, preventing form submission
+    }
+
+    // Logic for visa + accomodation + Ticket
+    let responseText = "";
+
+    // Check if Visa Fee is greater than 0
+    if (parseInt(visaFee) > 0) {
+      responseText += "  Visa";
+    }
+    // Check if airline fare is greater than 0
+    if (parseInt(airlineFare) > 0) {
+      responseText += " | Ticket";
+    }
+
+    // Check if Makkah and Madinah hotel prices are greater than 0
+    if (parseInt(priceOfMakkahHotel) > 0 && parseInt(priceOfMadinahHotel) > 0) {
+      responseText += " | Accomodation";
+    }
 
     function formatDate(date) {
       const d = new Date(date);
@@ -553,10 +598,11 @@ document.addEventListener("DOMContentLoaded", function () {
             : ""
         }\n` +
         `*Airline:* ${airline} (${airlineClass})\n` +
-        `${selectedAirline ? `*Airline Fare:* ${airlineFare} (PKR)` : ""}\n` +
+        `${selectedAirline ? `*Ticket Fare:* ${airlineFare} (PKR)` : ""}\n` +
         `${visaCheck ? `*Visa Fee:* ${visaCheck} (PKR)` : ""}\n` +
         `*No. Of Person:* ${numberOfPerson}\n` +
         `*Total Package Amount:* ${totalAmount} (PKR)\n\n` +
+        `${responseText}\n` +
         `${expDate ? `*Package Expires on:* ${formatDate(expDate)}` : ""}`
     )}`;
 
