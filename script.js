@@ -522,16 +522,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Check if Visa Fee is greater than 0
     if (parseInt(visaFee) > 0) {
-      responseText += "  Visa";
+      responseText += "Visa | ";
     }
     // Check if airline fare is greater than 0
     if (parseInt(airlineFare) > 0) {
-      responseText += " | Ticket";
+      responseText += "Ticket | ";
     }
 
     // Check if Makkah and Madinah hotel prices are greater than 0
     if (parseInt(priceOfMakkahHotel) > 0 && parseInt(priceOfMadinahHotel) > 0) {
-      responseText += " | Accomodation";
+      responseText += "Accomodation | ";
     }
 
     function formatDate(date) {
