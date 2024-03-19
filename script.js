@@ -474,16 +474,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let priceOfMakkahHotel = document.getElementById("makkahHotelPrice").value;
     let priceOfMadinahHotel =
       document.getElementById("madinahHotelPrice").value;
-    let pesengerName = document.getElementById("pesengerName").value;
     let phoneNumber = document.getElementById("phoneNumber").value.trim();
     let packageDaysElement = document.getElementById("days");
     let packageDaysValue = packageDaysElement.value;
     updatePassengerName();
     //  extracting the number from the string...
     let numericPackageDays = parseInt(packageDaysValue);
-
-    let splitValue = Math.floor(numericPackageDays / 2);
-
     let makkahHotel = document.getElementById("makkah-hotel-list").value;
     // let makkahHotelType = document.getElementById("makkah-hotel-star").value;
     let nightsInMakkah = document.getElementById("nightsInMakkah").value;
@@ -495,7 +491,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let visaFee = document.getElementById("visaFee").value;
     let airline = document.getElementById("airline-list").value;
     let airlineClass = document.getElementById("airline-class").value;
-    let airlineFare = document.getElementById("airlineFare").value;
+    let airlineFare = document.getElementById("airlineFareDisabled").value;
     let numberOfPerson = document.getElementById("number-of-person").value;
     document
       .getElementById("pesengerCheck")
