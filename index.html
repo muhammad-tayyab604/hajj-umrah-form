@@ -8,8 +8,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://kit.fontawesome.com/9460aaea96.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link href="./src/output.css" rel="stylesheet">
     <title>Hajj/Umrah Package Form</title>
 </head>
@@ -50,38 +52,41 @@
                         <div class="mb-4">
                             <div class="md:flex">
                                 <div class="md:flex-1 pr-3">
-                                    <label class="block uppercase tracking-wide text-xs font-bold">Pesenger Name</label>
-                            <div class="flex flex-col w-full md:flex-row md:items-center md:gap-5 gap-2">
-                                 <input required type="text"
-                                    class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g. Muhammad..." id="pesengerName">
-                            </div>
-                            </div>
-                            <div class="md:flex-1">
-                                <label class="block uppercase tracking-wide text-xs font-bold">Package Days</label>
-                            <div class="flex flex-col w-full md:flex-row md:items-center md:gap-5 gap-2">
-                                <select id="days"
-                                    class="packageDays text-sm rounded-lg border block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500">
-                                    <!-- <option disabled selected>Select Package Days</option> -->
-                                    <!-- <option selected value="15">15 Days</option> -->
-                                    <option value="21">21 Days</option>
-                                    <option value="28">28 Days</option>
-                                </select>
-                                <button type="button" id="custom-days-btn"
-                                    class="flex justify-center items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center gap-2 md:items-center mb-5 md:mb-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 text-gray-200"
-                                    data-modal-target="modal-for-packageDays" data-modal-toggle="modal-for-packageDays">
-                                    Other
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                                </button>
+                                    <label class="block uppercase tracking-wide text-xs font-bold">Passenger
+                                        Name</label>
+                                    <div class="flex flex-col w-full md:flex-row md:items-center md:gap-5 gap-2">
+                                        <input required type="text"
+                                            class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            placeholder="e.g. Muhammad..." id="pesengerName">
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="md:flex-1">
+                                    <label class="block uppercase tracking-wide text-xs font-bold">Package Days</label>
+                                    <div class="flex flex-col w-full md:flex-row md:items-center md:gap-5 gap-2">
+                                        <select id="days"
+                                            class="packageDays text-sm rounded-lg border block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500">
+                                            <!-- <option disabled selected>Select Package Days</option> -->
+                                            <!-- <option selected value="15">15 Days</option> -->
+                                            <option value="21">21 Days</option>
+                                            <option value="28">28 Days</option>
+                                        </select>
+                                        <button type="button" id="custom-days-btn"
+                                            class="flex justify-center items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center gap-2 md:items-center mb-5 md:mb-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 text-gray-200"
+                                            data-modal-target="modal-for-packageDays"
+                                            data-modal-toggle="modal-for-packageDays">
+                                            Other
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             <!-- Modal -->
                             <div id="modal-for-packageDays" tabindex="-1"
                                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                 <div class="relative p-4 w-full max-w-md max-h-full">
-                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                    <div class="relative rounded-lg modal-for-packageDays shadow bg-gray-700">
                                         <div class="p-4 md:p-5 text-center flex gap-5 flex-col">
                                             <div class="relative">
                                                 <h2 class="text-xl mb-4 font-bold">Add More or Less Days</h2>
@@ -90,15 +95,15 @@
                                                 </p>
                                                 <p>Please write only number like 12, 14, 40 etc</p>
                                                 <input type="number" id="custom-days"
-                                                    class="block w-full p-4 ps-10 text-sm text-gray-100 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                    class="block w-full p-4 ps-10 text-sm text-gray-100 border rounded-lg bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
                                                     placeholder="Custom Days" />
-                                                <button type="button" id="add-days"
-                                                    class="absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                                                <button type="button" id="add-days" data-modal-hide="modal-for-packageDays"
+                                                    class="absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Add
                                                     Days
                                                 </button>
                                             </div>
                                             <button data-modal-hide="modal-for-packageDays" type="button"
-                                                class="py-2.5 px-5 ms-3 text-sm font-medium focus:outline-none rounded-lg focus:ring-gray-700 text-gray-400 border-gray-600  bg-gray-800">Cancel
+                                                class="py-2.5 px-5 ms-3 text-sm font-medium focus:outline-none rounded-lg focus:ring-gray-700 text-gray-400 border-gray-600  bg-gray-800">Close
                                             </button>
                                         </div>
                                     </div>
@@ -117,10 +122,13 @@
                                 <div class="flex flex-col md:flex-row md:items-center mb-5 md:mb-0 md:gap-5 gap-2">
                                     <select id="makkah-hotel-list"
                                         class=" text-sm rounded-lg border border-gray-600 block w-[100%] p-2.5 bg-gray-700 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
-                                        <option selected value="Anjum Makkah Hotel - 7 Star">Anjum Makkah Hotel - 7 Star</option>
+                                        <option value="Anjum Makkah Hotel - 7 Star">Anjum Makkah Hotel - 7 Star</option>
                                         <option value="Durrat Mina Hotel - 5 Star">Durrat Mina Hotel - 5 Star</option>
-                                        <option value="Marriott Makkah Jabal Omar - 4 Star">Marriott Makkah Jabal Omar - 4 Star</option>
-                                        <option value="Elaf Kinda Hotel Makkah - Shuttle">Elaf Kinda Hotel Makkah - Shuttle</option>
+                                        <option value="Elaf Kinda Hotel Makkah - Shuttle">Elaf Kinda Hotel Makkah -
+                                            Shuttle</option>
+                                        <option value="Marriott Makkah Jabal Omar - 4 Star">Marriott Makkah Jabal Omar -
+                                            4 Star</option>
+
                                     </select>
                                     <button type="button"
                                         class=" flex justify-center items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center gap-2 md:items-center mb-5 md:mb-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
@@ -136,21 +144,21 @@
                                 <div id="makkah-hotels-other" tabindex="-1"
                                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                     <div class="relative p-4 w-full max-w-md max-h-full">
-                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                        <div class="relative rounded-lg shadow bg-gray-700">
                                             <div class="p-4 md:p-5 text-center flex gap-5 flex-col">
                                                 <div class="relative">
                                                     <h2 class="text-xl mb-4 font-bold">Add Makkah Hotel</h2>
                                                     <p class="text-lg text-red-600" style="display: none;"
                                                         id="input-makkah-empty-error">Field Shouldn't be Empty!</p>
                                                     <input type="text" id="custom-makkah-Hotel"
-                                                        class="block w-full p-4 ps-10 text-sm text-gray-100 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark: dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                        class="block w-full p-4 ps-10 text-sm text-gray-100 border rounded-lg bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                                                         placeholder="Add Makkah Hotel" />
-                                                    <button type="button" id="addMakkahHotelBtn"
-                                                        class=" absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                                                    <button type="button" id="addMakkahHotelBtn" data-modal-hide="makkah-hotels-other"
+                                                        class=" absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Add
                                                         Makkah Hotel</button>
                                                 </div>
                                                 <button data-modal-hide="makkah-hotels-other" type="button"
-                                                    class="py-2.5 px-5 ms-3 text-sm font-medium focus:outline-none rounded-lg focus:ring-gray-700 text-gray-400 border-gray-600  bg-gray-800">Cancel</button>
+                                                    class="py-2.5 px-5 ms-3 text-sm font-medium focus:outline-none rounded-lg focus:ring-gray-700 text-gray-400 border-gray-600  bg-gray-800">Close</button>
                                             </div>
                                         </div>
                                     </div>
@@ -184,7 +192,7 @@
                                     Hotel Per Night Price (Riyal)</label>
                                 <input required type="number"
                                     class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder="ex. 100(Riyals)" value="2800" id="makkahHotelPrice">
+                                    placeholder="ex. 100(Riyals)" value="10" id="makkahHotelPrice">
 
                             </div>
                         </div>
@@ -192,15 +200,19 @@
                         <!-- Madinah hotels -->
                         <h2 class="text-xl font-bold mb-2 underline">Madinah Details</h2>
                         <div class="md:flex mb-4">
-                            <div class="md:flex-grow w-96">
+                            <div class="md:flex-grow md:w-96">
                                 <label class="block uppercase tracking-wide text-xs font-bold">Madinah Hotels</label>
                                 <div class="flex flex-col md:flex-row md:items-center mb-5 md:mb-0 md:gap-5 gap-2">
                                     <select id="madinah-hotel-list"
                                         class="text-sm rounded-lg border block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
-                                        <option value="Pullman Zamzam Madina - 7 Start">Pullman Zamzam Madina - 7 Start</option>
+                                        <option value="Frontel Al Harithia Hotel - 4 Star">Frontel Al Harithia Hotel - 4
+                                            Star</option>
+                                        <option value="Madinah Movenpick Hotel - Shuttle">Madinah Movenpick Hotel -
+                                            Shuttle</option>
+                                        <option value="Pullman Zamzam Madina - 7 Star">Pullman Zamzam Madina - 7 Star
+                                        </option>
                                         <option value="Shahd al Madinah - 5 Star">Shahd al Madinah - 5 Star</option>
-                                        <option value="Frontel Al Harithia Hotel - 4 Star">Frontel Al Harithia Hotel - 4 Star</option>
-                                        <option value="Madinah Movenpick Hotel - Shuttle">Madinah Movenpick Hotel - Shuttle</option>
+
                                     </select>
                                     <button type="button"
                                         class=" flex justify-center items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center gap-2 md:items-center mb-5 md:mb-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
@@ -217,17 +229,17 @@
                                 <div id="madinah-hotels-other" tabindex="-1"
                                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                     <div class="relative p-4 w-full max-w-md max-h-full">
-                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                        <div class="relative rounded-lg shadow bg-gray-700">
                                             <div class="p-4 md:p-5 text-center flex gap-5 flex-col">
                                                 <div class="relative">
                                                     <h2 class="text-xl mb-4 font-bold">Add Madinah Hotel</h2>
                                                     <p class="text-lg text-red-600" style="display: none;"
                                                         id="input-madinah-empty-error">Field Shouldn't be Empty!</p>
                                                     <input type="text" id="custom-madinah-hotel"
-                                                        class="block w-full p-4 ps-10 text-sm text-gray-100 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark: dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                        class="block w-full p-4 ps-10 text-sm text-gray-100 border rounded-lg bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                                                         placeholder="Add Madinah Hotel" />
-                                                    <button type="button" id="addMadinahHotelBtn"
-                                                        class=" absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                                                    <button type="button" id="addMadinahHotelBtn" data-modal-hide="madinah-hotels-other"
+                                                        class=" absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Add
                                                         Madinah Hotel</button>
                                                 </div>
                                                 <button data-modal-hide="madinah-hotels-other" type="button"
@@ -266,7 +278,7 @@
                                     Hotel Per Night Price (Riyal)</label>
                                 <input required type="number"
                                     class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder="ex. 100(Riyals)" value="100" id="madinahHotelPrice">
+                                    placeholder="ex. 100(Riyals)" value="10" id="madinahHotelPrice">
                             </div>
                         </div>
                     </div>
@@ -276,7 +288,7 @@
                 <div class="md:flex-1 mb-8">
                     <h2 class="text-xl font-bold mb-2 underline">Airline Details</h2>
 
-                   
+
                     <div class="md:flex w-full flex-row mt-2 mb:mt-0 md:px-3">
                         <div class="md:flex-1">
                             <label
@@ -284,11 +296,12 @@
                             <div class="flex flex-col w-full md:flex-row md:items-center mb-5 md:mb-0 md:gap-5 gap-2">
                                 <select id="airline-list"
                                     class="text-sm rounded-lg border block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
-                                    <option selected value="Emirates">Emirates</option>
-                                    <option value="Air Blue">Air Blue</option>
+                                    <option selected value="Air Blue">Air Blue</option>
+                                    <option value="Emirates">Emirates</option>
                                     <option value="PIA">PIA</option>
-                                    <option value="28">Riyadh Air</option>
-                                    <option value="28">Nesma Airlines</option>
+                                    <option value="Riyadh Air">Riyadh Air</option>
+                                    <option value="Saudi Airline">Saudi Airline</option>
+
                                 </select>
                                 <button type="button"
                                     class=" flex justify-center items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center gap-2 md:items-center mb-5 md:mb-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
@@ -303,17 +316,17 @@
                                 <div id="airlines-other" tabindex="-1"
                                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                     <div class="relative p-4 w-full max-w-md max-h-full">
-                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                        <div class="relative rounded-lg shadow bg-gray-700">
                                             <div class="p-4 md:p-5 text-center flex gap-5 flex-col">
                                                 <div class="relative">
                                                     <h2 class="text-xl mb-4 font-bold">Add Other Airline</h2>
                                                     <p class="text-lg text-red-600" style="display: none;"
                                                         id="input-airline-empty-error">Field Shouldn't be Empty!</p>
                                                     <input type="text" id="custom-airline"
-                                                        class="block w-full p-4 ps-10 text-sm text-gray-100 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark: dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                        class="block w-full p-4 ps-10 text-sm text-gray-100 border  rounded-lg  bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                                                         placeholder="Add Other Airline" />
-                                                    <button type="button" id="addAirlineBtn"
-                                                        class=" absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                                                    <button type="button" id="addAirlineBtn" data-modal-hide="airlines-other"
+                                                        class=" absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Add
                                                         Airline</button>
                                                 </div>
                                                 <button data-modal-hide="airlines-other" type="button"
@@ -330,10 +343,11 @@
                                 Class</label>
                             <select id="airline-class"
                                 class="text-sm rounded-lg border block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
-                                <option value="First Class">First Class</option>
                                 <option value="Business Class">Business Class</option>
+                                <option value="Economy Class" selected>Economy Class</option>
+                                <option value="First Class">First Class</option>
                                 <option value="Premium Economy">Premium Economy</option>
-                                <option selected value="Economy Class">Economy Class</option>
+
                             </select>
                         </div>
                     </div>
@@ -350,7 +364,7 @@
                                 Persons</label>
                             <input required type="number"
                                 class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="e.g. 5" value="5" id="number-of-person">
+                                placeholder="e.g. 5" value="1" id="number-of-person">
                         </div>
                     </div>
                 </div>
@@ -359,7 +373,8 @@
                     <h2 class="text-xl font-bold mb-2 underline">Package Total Price</h2>
                     <div class="md:flex w-full flex-row mt-2 mb:mt-0 md:px-3">
                         <div class="md:flex-1">
-                            <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Riyal Exchange
+                            <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Riyal
+                                Exchange
                                 Rate</label>
                             <input required type="number"
                                 class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
@@ -368,7 +383,7 @@
                         <div class="md:flex-1 md:pl-3 w-full">
                             <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Visa
                                 Fee (Riyal)</label>
-                            <input required type="number" required
+                            <input required type="text" required
                                 class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="Visa Fee in Riyal" value="7890" id="visaFee">
                         </div>
@@ -376,14 +391,16 @@
                     <div class="md:flex w-full flex-row gap-4 mt-2 mb:mt-0 md:px-3">
                         <div class="md:flex-1 w-full">
                             <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Makkah
+                                Hotel
                                 Price (PKR)</label>
-                            <input type="number"
+                            <input type="text"
                                 class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-600 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="0" id="makkahHPDisabled" disabled>
                         </div>
                         <p class="flex justify-center items-center text-2xl">+</p>
                         <div class="md:flex-1 w-full">
                             <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Madinah
+                                Hotel
                                 Price (PKR)</label>
                             <input type="text"
                                 class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-600 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
@@ -410,29 +427,17 @@
                                 placeholder="0" id="airlineFareDisabled" disabled>
                         </div>
                         <div class="">
-                            <!-- <button data-modal-target="adjustment-modal" data-modal-toggle="adjustment-modal" type="button" class="px-8 py-2 mt-4 md:mt-0 w-full bg-blue-600 hover:bg-blue-700 rounded-lg">Adjustment</button> -->
+                            <p class="flex justify-center items-center text-2xl">+</p>
+                        </div>
+                        <div class="md:w-80 w-[19.4rem]">
+                            <label
+                                class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Adjustment</label>
+                            <input type="text"
+                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-600 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="0" id="adjustment">
+                        </div>
+                        <div class="">
                             <p class="flex justify-center items-center text-2xl">=</p>
-                            <!-- Modal -->
-                            <!-- <div id="adjustment-modal" tabindex="-1"
-                                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                <div class="relative p-4 w-full max-w-md max-h-full">
-                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                        <div class="p-4 md:p-5 text-center flex gap-5 flex-col">
-                                            <div class="relative">
-                                                <h2 class="text-xl mb-4 font-bold">Adjustment</h2>
-                                                <input type="text" id="custom-search"
-                                                    class="block w-full p-4 ps-10 text-sm text-gray-100 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark: dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                    placeholder="e.g. 7800" />
-                                                <button type="button"
-                                                    class=" absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Adjustment</button>
-                                            </div>
-                                            <button data-modal-hide="adjustment-modal" type="button"
-                                                class="py-2.5 px-5 ms-3 text-sm font-medium focus:outline-none rounded-lg focus:ring-gray-700 text-gray-400 border-gray-600  bg-gray-700">Cancel</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <!-- Modal End -->
                         </div>
 
                         <div class="md:flex-1 md:pl-3 w-full">
@@ -448,10 +453,18 @@
                 <div class="md:flex md:flex-col mb-6 border border-t-1 border-b-0 border-x-0 border-cream-dark">
                     <div class="flex flex-row">
                         <div class="md:w-96 w-full flex items-center gap-2 mt-4 mr-4">
-                            <input type="checkbox" id="visaCheck"
+                            <input type="checkbox" id="pesengerCheck" checked
                                 class="block h-5 w-5 text-sm rounded-lg border bg-blue-700 focus:ring-4 outline-none focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
-                            <label for="visaCheck"
-                                class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Visa Fee (PKR)</label>
+                            <label for="pesengerCheck"
+                                class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Passenger
+                                Name</label>
+                        </div>
+                        <div class="md:w-96 w-full flex items-center gap-2 mt-4 mr-4">
+                            <input type="checkbox" id="hotelPricesCheck"
+                                class="block h-5 w-5 text-sm rounded-lg border bg-blue-700 focus:ring-4 outline-none focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
+                            <label for="hotelPricesCheck"
+                                class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Hotel
+                                Prices (PKR)</label>
                         </div>
                         <div class="md:w-96 w-full flex items-center gap-2 mt-4 mr-4">
                             <input type="checkbox" id="airlineCheck"
@@ -460,13 +473,14 @@
                                 class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Airline</label>
                         </div>
                         <div class="md:w-96 w-full flex items-center gap-2 mt-4 mr-4">
-                            <input type="checkbox" id="pesengerCheck" checked
+                            <input type="checkbox" id="visaCheck"
                                 class="block h-5 w-5 text-sm rounded-lg border bg-blue-700 focus:ring-4 outline-none focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
-                            <label for="pesengerCheck"
-                                class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Pesenger Name</label>
+                            <label for="visaCheck"
+                                class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Visa Fee
+                                (PKR)</label>
                         </div>
                     </div>
-                     <div class="md:w-96 w-full mt-4">
+                    <div class="md:w-96 w-full mt-4">
                         <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">WhatsApp
                             Number</label>
                         <input required type="text" id="phoneNumber"
@@ -484,7 +498,7 @@
                                 placeholder="Airline Fare(PKR)" value="+923005115035">
                         </div>
                     </div>
-                   
+
                     <div class="md:flex-1 px-3 text-center md:text-right">
                         <button type="button" id="submitbtn"
                             class="bg-blue-600 text-xl font-bold text-gray-200 px-10 py-2 mt-4 rounded-lg hover:bg-blue-700 ring-offset-2 focus:ring-2 focus:ring-blue-400">

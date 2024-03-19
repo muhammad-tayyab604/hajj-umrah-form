@@ -11,8 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!isNaN(customDaysValue) && customDaysValue > 0) {
       updateNightsBasedOnPackageDays(customDaysValue);
       splitingDaysNights();
+      // Close the modal after adding days
+      document.getElementById("modal-for-packageDays").classList.add("hidden");
     } else {
-      console.error("Invalid custom days input");
+      alert(
+        "Field shouldn't be empty or invalid. Please enter a valid number of days."
+      );
     }
   });
 
@@ -158,10 +162,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let customMakkahHotelValue = customeMakkahHotelInput.value.trim();
 
     if (customMakkahHotelValue === "") {
-      inputEmptyError.style.display = "block";
-      setTimeout(() => {
-        inputEmptyError.style.display = "none";
-      }, 3000);
+      // inputEmptyError.style.display = "block";
+      // setTimeout(() => {
+      //   inputEmptyError.style.display = "none";
+      // }, 3000);
+      alert("Flields Shouldn't be Empty");
       return;
     }
     let addedOption = document.createElement("option");
@@ -183,10 +188,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let customMadinahHotelValue = customMadinahHotelInput.value.trim();
 
     if (customMadinahHotelValue === "") {
-      inputEmptyError.style.display = "block";
-      setTimeout(() => {
-        inputEmptyError.style.display = "none";
-      }, 3000);
+      // inputEmptyError.style.display = "block";
+      // setTimeout(() => {
+      //   inputEmptyError.style.display = "none";
+      // }, 3000);
+      alert("Flields Shouldn't be Empty");
       return;
     }
 
@@ -208,10 +214,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let inputEmptyError = document.getElementById("input-airline-empty-error");
 
     if (customAirlineValue === "") {
-      inputEmptyError.style.display = "block";
-      setTimeout(() => {
-        inputEmptyError.style.display = "none";
-      }, 3000);
+      // inputEmptyError.style.display = "block";
+      // setTimeout(() => {
+      //   inputEmptyError.style.display = "none";
+      // }, 3000);
+      alert("Flields Shouldn't be Empty");
+
       return;
     }
     let addedOption = document.createElement("option");
@@ -242,11 +250,17 @@ document.addEventListener("DOMContentLoaded", function () {
   //   Airline Fare
   let airlineFare = document.getElementById("airlineFare");
   let airlineFareDisabled = document.getElementById("airlineFareDisabled");
-  airlineFareDisabled.value = airlineFare.value.trim();
+
+  function formatAirlineFare(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  airlineFareDisabled.value = formatAirlineFare(airlineFare.value.trim());
 
   airlineFare.addEventListener("input", () => {
     let airlineFareValue = parseInt(airlineFare.value.trim());
-    airlineFareDisabled.value = isNaN(airlineFareValue) ? "" : airlineFareValue;
+    airlineFareDisabled.value = isNaN(airlineFareValue)
+      ? ""
+      : formatAirlineFare(airlineFareValue);
     updateTotalAmount();
   });
 
@@ -275,6 +289,18 @@ document.addEventListener("DOMContentLoaded", function () {
     updateTotalAmount();
   });
 
+  // No of Person
+  let numberOfPerson = document.getElementById("number-of-person");
+  numberOfPerson.addEventListener("input", (e) => {
+    updateTotalAmount();
+  });
+
+  // Adjustment
+  let adjustment = document.getElementById("adjustment");
+  adjustment.addEventListener("input", () => {
+    updateTotalAmount();
+  });
+
   //   ----------Sum the price Start----------
   function updateTotalAmount() {
     let makkahHPValue = parseInt(MakkahHP.value.trim()) || 0;
@@ -285,6 +311,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let totalAmountDisabled = document.getElementById("totalAmount");
     let makkaNights = document.getElementById("nightsInMakkah").value;
     let madinahNights = document.getElementById("nightsInMadinah").value;
+    let numberOfPerson = parseInt(
+      document.getElementById("number-of-person").value
+    );
+    let adjustment = parseInt(document.getElementById("adjustment").value);
+
+    if (isNaN(adjustment)) {
+      adjustment = 0; // Set adjustment to 0 if it's not a valid number
+    }
 
     let makkahTotal =
       isNaN(makkaNights) || isNaN(exchangeRate)
@@ -302,6 +336,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let totalAmount = makkahTotal + madinahTotal + visaPrice + airlineFareValue;
 
+    totalAmount *= numberOfPerson;
+    totalAmount += adjustment;
+
     // Format the total amount with commas
     let formattedTotalAmount = totalAmount
       .toString()
@@ -309,9 +346,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Update the value of the "Total Package Amount" input field
     totalAmountDisabled.value = isNaN(totalAmount) ? "" : formattedTotalAmount;
+    // console.log("Formated total amount", formattedTotalAmount);
   }
-
-  updateTotalAmount();
+  // Call updateTotalAmount function once when the page loads
+  window.addEventListener("load", updateTotalAmount);
   //   ----------Sum the price End----------
 
   // ---------- Makkah Total start ----------
@@ -325,7 +363,12 @@ document.addEventListener("DOMContentLoaded", function () {
       isNaN(makkaNights) || isNaN(exchangeRate)
         ? 0
         : parseInt(exchangeRate) * parseInt(makkaNights) * makkahHPValue;
-    makkahHPDisabled.value = isNaN(makkahTotal) ? "" : makkahTotal;
+
+    let formatedMakkahPrice = makkahTotal
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    makkahHPDisabled.value = isNaN(makkahTotal) ? "" : formatedMakkahPrice;
+    // console.log(formatedMakkahPrice);
   }
   //set default value to initial value
   document.getElementById("makkahHPDisabled").defaultValue =
@@ -353,7 +396,10 @@ document.addEventListener("DOMContentLoaded", function () {
       isNaN(madinahNights) || isNaN(exchangeRate)
         ? 0
         : parseInt(exchangeRate) * parseInt(madinahNights) * MadinahHPValue;
-    MadinahHPDisabled.value = isNaN(madinahTotal) ? "" : madinahTotal;
+    let formatedMadinahPrice = madinahTotal
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    MadinahHPDisabled.value = isNaN(madinahTotal) ? "" : formatedMadinahPrice;
   }
 
   // Set initial madinah total price
@@ -381,7 +427,10 @@ document.addEventListener("DOMContentLoaded", function () {
       isNaN(visaFeeValue) || isNaN(exchangeRate)
         ? 0
         : parseInt(exchangeRate) * visaFeeValue;
-    visaFeeDisabled.value = isNaN(visaPrice) ? "" : visaPrice;
+    let formatedVisaFee = visaPrice
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    visaFeeDisabled.value = isNaN(visaPrice) ? "" : formatedVisaFee;
   }
 
   // Initial visa fee value
@@ -436,6 +485,11 @@ document.addEventListener("DOMContentLoaded", function () {
       .addEventListener("change", updatePassengerName);
     let expDate = document.getElementById("expriyDateInput").value;
     let totalAmount = document.getElementById("totalAmount").value;
+
+    // Check if the "Hotel Prices (PKR)" checkbox is checked
+    let hotelPricesCheck = document.getElementById("hotelPricesCheck");
+    let includeHotelPrices = hotelPricesCheck.checked;
+
     function formatDate(date) {
       const d = new Date(date);
       const day = d.getDate().toString().padStart(2, "0");
@@ -484,23 +538,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // send form data to Phone number
     let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      `${selectedPassenger ? `Passenger's Name: ${selectedPassenger}\n` : ""} 
+      `${selectedPassenger ? `Dear ${selectedPassenger}\n` : ""} 
     Package: ${numericPackageDays} Days\n
     Makkah Hotel: ${makkahHotel} - (${nightsInMakkah} Nights)\n
-    Makkah Hotel Price: ${makkahHotelPrice} (PKR)\n
     Madinah Hotel: ${madinahHotel} - (${nightsInMadinah} Nights)\n
-    Madinah Hotel price: ${madinahHotelPrice} (PKR)\n
-    ${
-      selectedAirline
-        ? `Airline: ${selectedAirline} (${airlineClass} - ${airlineFare})\n`
-        : ""
-    }
-    No. Of Person: ${numberOfPerson}\n
+     ${
+       includeHotelPrices ? `Makkah Hotel Price: ${makkahHotelPrice} (PKR)` : ""
+     }\n
+     ${
+       includeHotelPrices
+         ? `Madinah Hotel Price: ${madinahHotelPrice} (PKR)`
+         : ""
+     }\n
+     Airline: ${airline} (${airlineClass})
+    ${selectedAirline ? `Airline Fare: ${airlineFare} (PKR)\n` : ""}
     ${visaCheck ? `Visa Fee: ${visaCheck} (PKR)\n` : ""}
-    ${expDate ? `Expiry Date: ${formatDate(expDate)}\n` : ""}
-    Total Package Amount: ${totalAmount} (PKR)`
+    No. Of Person: ${numberOfPerson}\n
+    Total Package Amount: ${totalAmount} (PKR)\n\n
+    ${expDate ? `Package Expires on: ${formatDate(expDate)}\n` : ""}
+    `
     )}`;
-
     window.open(url, "_blank").focus();
   });
 });
