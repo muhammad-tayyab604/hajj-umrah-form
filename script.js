@@ -528,7 +528,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Check if Makkah and Madinah hotel prices are greater than 0
     if (parseInt(priceOfMakkahHotel) > 0 && parseInt(priceOfMadinahHotel) > 0) {
-      responseText += "Accomodation | ";
+      responseText += "Accomodation";
     }
 
     function formatDate(date) {
