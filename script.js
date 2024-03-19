@@ -538,24 +538,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // send form data to Phone number
     let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      `${selectedPassenger ? `Dear ${selectedPassenger}` : ""}` +
-        `<b>Package:</b> ${numericPackageDays} Days` +
-        `<b>Makkah Hotel:</b> ${makkahHotel} - (${nightsInMakkah} Nights)` +
-        `<b>Madinah Hotel:</b> ${madinahHotel} - (${nightsInMadinah} Nights)` +
+      `${selectedPassenger ? `Dear ${selectedPassenger}` : ""}\n` +
+        `*Package:* ${numericPackageDays} Days\n` +
+        `*Makkah Hotel:* ${makkahHotel} - (${nightsInMakkah} Nights)\n` +
+        `*Madinah Hotel:* ${madinahHotel} - (${nightsInMadinah} Nights)\n` +
         `${
           includeHotelPrices
-            ? `<b>Makkah Hotel Price:</b> ${makkahHotelPrice} (PKR)`
+            ? `*Makkah Hotel Price:* ${makkahHotelPrice} (PKR)`
             : ""
-        }` +
+        }\n` +
         `${
           includeHotelPrices
-            ? `<b>Madinah Hotel Price:</b> ${madinahHotelPrice} (PKR)`
+            ? `*Madinah Hotel Price:* ${madinahHotelPrice} (PKR)`
             : ""
-        }` +
-        `<b>Airline:</b> ${airline} (${airlineClass})` +
-        `${selectedAirline ? `*Airline Fare:* ${airlineFare} (PKR)` : ""}` +
-        `${visaCheck ? `Visa Fee: ${visaCheck} (PKR)` : ""}` +
-        `No. Of Person: ${numberOfPerson}` +
+        }\n` +
+        `*Airline:* ${airline} (${airlineClass})\n` +
+        `${selectedAirline ? `*Airline Fare:* ${airlineFare} (PKR)` : ""}\n` +
+        `${visaCheck ? `Visa Fee: ${visaCheck} (PKR)` : ""}\n` +
+        `No. Of Person: ${numberOfPerson}\n` +
         `Total Package Amount: ${totalAmount} (PKR)\n\n` +
         `${expDate ? `Package Expires on: ${formatDate(expDate)}` : ""}`
     )}`;
