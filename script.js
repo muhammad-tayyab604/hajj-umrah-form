@@ -65,22 +65,41 @@ document.addEventListener("DOMContentLoaded", function () {
   splitingDaysNights();
 
   // Visa Check box logic
-  let visaLabelText = "";
-  const visaCheckbox = document.getElementById("visaCheck");
-  const visaLabel = document.querySelector('label[for="visaCheck"]');
-
-  visaCheckbox.addEventListener("change", () => {
-    visaLabelText = visaCheckbox.checked ? visaLabel.textContent : "";
-  });
+  let visaCheck = "";
+  document
+    .getElementById("visaCheck")
+    .addEventListener("change", function (event) {
+      if (event.target.checked) {
+        visaCheck = document.getElementById("visaFeeDisabled").value.trim();
+      } else {
+        visaCheck = "";
+      }
+    });
 
   // Airline Check box Logic
-  let airlineLabelText = "";
-  const airlineCheckBox = document.getElementById("airlineCheck");
-  const airlineLabel = document.querySelector('label[for="airlineCheck"]');
+  let selectedAirline = "";
 
-  airlineCheckBox.addEventListener("change", () => {
-    airlineLabelText = airlineCheckBox.checked ? airlineLabel.textContent : "";
-  });
+  document
+    .getElementById("airlineCheck")
+    .addEventListener("change", function (event) {
+      if (event.target.checked) {
+        // If the checkbox is checked, retrieve the selected airline
+        selectedAirline = document.getElementById("airline-list").value;
+      } else {
+        selectedAirline = "";
+      }
+    });
+
+  // Pessenger Name check box logic
+  let selectedPassenger = "";
+
+  function updatePassengerName() {
+    if (document.getElementById("pesengerCheck").checked) {
+      selectedPassenger = document.getElementById("pesengerName").value.trim();
+    } else {
+      selectedPassenger = "";
+    }
+  }
 
   // Expiry date enable disable
   let expDate = document.getElementById("expriyDate");
@@ -367,6 +386,8 @@ document.addEventListener("DOMContentLoaded", function () {
     oldDataBtn.style.display = "block";
   }
 
+  updatePassengerName();
+
   //   Send Form data to whatsapp
   let sentWhatsappBtn = document.getElementById("submitbtn");
   sentWhatsappBtn.addEventListener("click", () => {
@@ -374,7 +395,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let phoneNumber = document.getElementById("phoneNumber").value.trim();
     let packageDaysElement = document.getElementById("days");
     let packageDaysValue = packageDaysElement.value;
-
+    updatePassengerName();
     //  extracting the number from the string...
     let numericPackageDays = parseInt(packageDaysValue);
 
@@ -383,40 +404,55 @@ document.addEventListener("DOMContentLoaded", function () {
     let makkahHotel = document.getElementById("makkah-hotel-list").value;
     // let makkahHotelType = document.getElementById("makkah-hotel-star").value;
     let nightsInMakkah = document.getElementById("nightsInMakkah").value;
-    let makkahHotelPrice = document.getElementById("makkahHotelPrice").value;
+    let makkahHotelPrice = document.getElementById("makkahHPDisabled").value;
     let madinahHotel = document.getElementById("madinah-hotel-list").value;
     // let madinahHotelType = document.getElementById("madinah-hotel-star").value;
     let nightsInMadinah = document.getElementById("nightsInMadinah").value;
-    let madinahHotelPrice = document.getElementById("madinahHotelPrice").value;
+    let madinahHotelPrice = document.getElementById("madinahHPDisabled").value;
     let visaFee = document.getElementById("visaFee").value;
     let airline = document.getElementById("airline-list").value;
     let airlineClass = document.getElementById("airline-class").value;
     let airlineFare = document.getElementById("airlineFare").value;
     let numberOfPerson = document.getElementById("number-of-person").value;
-
+    document
+      .getElementById("pesengerCheck")
+      .addEventListener("change", updatePassengerName);
     let expDate = document.getElementById("expriyDateInput").value;
     let totalAmount = document.getElementById("totalAmount").value;
 
     // Store form data in local storage
+
     let formData = {
-      "Pesenger's Name": pesengerName,
-      "Phone Number": phoneNumber,
+      "Phone Number ": phoneNumber,
       Package: `${packageDaysValue} Days (${splitValue} + ${
         numericPackageDays - splitValue
       })`,
-      "Makkah Hotel": `${makkahHotel} - ${nightsInMakkah} Nights`,
-      "Makkah Hotel Price(Per Night)": `${makkahHotelPrice}`,
-      "Madinah Hotel": `${madinahHotel} - ${nightsInMadinah} Nights`,
-      "Madinah Hotel Price(Per Night)": madinahHotelPrice,
-      "Visa Fee(Riyal)": visaFee,
-      Airline: `${airline}(${airlineClass})`,
-      "Airline Fare": airlineFare,
-      "Number of Persons": numberOfPerson,
-      "Visa Check": `${visaLabelText ? visaLabelText : "Not Checked"}`,
-      "Airline Check": `${airlineLabelText ? airlineLabelText : "Not Checked"}`,
-      "Expiry Date": `${expDate ? expDate : "Not Available"}`,
-      "Total Package Amount": totalAmount,
+      "Makkah Hotel ": `${makkahHotel} - ${nightsInMakkah} Nights`,
+      "Makkah Hotel Price(Per Night) ": `${makkahHotelPrice}`,
+      "Madinah Hotel ": `${madinahHotel} - ${nightsInMadinah} Nights`,
+      "Madinah Hotel Price(Per Night) ": madinahHotelPrice,
+      "Number of Persons ": numberOfPerson,
+      // "Expiry Date ": `${expDate ? expDate : "Not Selected"}`,
+      "Total Package Amount ": totalAmount,
     };
+
+    // Only add the properties if they are selected
+    if (selectedPassenger) {
+      formData["Pessenger's Name: "] = `${selectedPassenger}`;
+    }
+    if (visaCheck) {
+      formData["Visa Price: "] = `${visaCheck} (PKR)`;
+    }
+
+    if (selectedAirline) {
+      formData[
+        "Airline: "
+      ] = `${selectedAirline}(${airlineClass} - ${airlineFare})`;
+    }
+
+    if (expDate) {
+      formData["Expiry Date: "] = `${expDate}`;
+    }
 
     let savedData = localStorage.getItem("formDataArray");
     let formDataArray = savedData ? JSON.parse(savedData) : [];
@@ -424,11 +460,23 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("formDataArray", JSON.stringify(formDataArray));
 
     // send form data to Phone number
-    let url = `https://wa.me/${phoneNumber}?text=Pesenger's Name: ${pesengerName}%0aPackage: ${numericPackageDays} Days%0aMakkah Hotel: ${makkahHotel} - ${nightsInMakkah} Nights%0aMakkah Hotel Price: ${makkahHotelPrice}%0aMadinah Hotel: ${madinahHotel} - ${nightsInMadinah} Nights%0aMadinah Hotel price: ${madinahHotelPrice}%0aAirline: ${airline}(${airlineClass} - ${airlineFare})%0aNo. Of Person: ${numberOfPerson}%0a${
-      visaLabelText ? `Visa Check: ${visaLabelText}` : ""
-    }%0a${airlineLabelText ? `Airline Check: ${airlineLabelText}` : ""}%0a${
-      expDate ? `Expiry Date: ${expDate}` : ""
-    }%0a%0aTotal Package Amount: ${totalAmount}`;
+    let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      `${selectedPassenger ? `Passenger's Name: ${selectedPassenger}\n` : ""} 
+    Package: ${numericPackageDays} Days\n
+    Makkah Hotel: ${makkahHotel} - (${nightsInMakkah} Nights)\n
+    Makkah Hotel Price: ${makkahHotelPrice} (PKR)\n
+    Madinah Hotel: ${madinahHotel} - (${nightsInMadinah} Nights)\n
+    Madinah Hotel price: ${madinahHotelPrice} (PKR)\n
+    ${
+      selectedAirline
+        ? `Airline: ${selectedAirline} (${airlineClass} - ${airlineFare})\n`
+        : ""
+    }
+    No. Of Person: ${numberOfPerson}\n
+    ${visaCheck ? `Visa Fee: ${visaCheck} (PKR)\n` : ""}
+    ${expDate ? `Expiry Date: ${expDate}\n` : ""}
+    Total Package Amount: ${totalAmount} (PKR)`
+    )}`;
 
     window.open(url, "_blank").focus();
   });

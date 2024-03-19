@@ -110,7 +110,7 @@
                         <!-- Makkah hotels -->
                         <h2 class="text-xl font-bold mb-2 underline">Makkah Details</h2>
                         <div class="md:flex mb-4">
-                            <div class="md:flex-1 md:pr-3">
+                            <div class="md:flex-grow md:w-96">
                                 <label
                                     class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Makkah
                                     Hotels</label>
@@ -192,7 +192,7 @@
                         <!-- Madinah hotels -->
                         <h2 class="text-xl font-bold mb-2 underline">Madinah Details</h2>
                         <div class="md:flex mb-4">
-                            <div class="md:flex-1 md:pr-3">
+                            <div class="md:flex-grow w-96">
                                 <label class="block uppercase tracking-wide text-xs font-bold">Madinah Hotels</label>
                                 <div class="flex flex-col md:flex-row md:items-center mb-5 md:mb-0 md:gap-5 gap-2">
                                     <select id="madinah-hotel-list"
@@ -276,27 +276,12 @@
                 <div class="md:flex-1 mb-8">
                     <h2 class="text-xl font-bold mb-2 underline">Airline Details</h2>
 
-                    <div class="md:flex w-full flex-row mt-2 mb:mt-0 md:px-3">
-                        <div class="md:flex-1">
-                            <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Exchange
-                                Rate</label>
-                            <input required type="number"
-                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="" value="78" id="exchangeRate">
-                        </div>
-                        <div class="md:flex-1 md:pl-3 w-full">
-                            <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Visa
-                                Fee (Riyal)</label>
-                            <input required type="number" required
-                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Visa Fee in Riyal" value="7890" id="visaFee">
-                        </div>
-                    </div>
+                   
                     <div class="md:flex w-full flex-row mt-2 mb:mt-0 md:px-3">
                         <div class="md:flex-1">
                             <label
                                 class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Airlines</label>
-                            <div class="flex flex-col md:flex-row md:items-center mb-5 md:mb-0 md:gap-5 gap-2">
+                            <div class="flex flex-col w-full md:flex-row md:items-center mb-5 md:mb-0 md:gap-5 gap-2">
                                 <select id="airline-list"
                                     class="text-sm rounded-lg border block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
                                     <option selected value="Emirates">Emirates</option>
@@ -345,17 +330,17 @@
                                 Class</label>
                             <select id="airline-class"
                                 class="text-sm rounded-lg border block w-[100%] p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500">
-                                <option selected>First Class</option>
-                                <option value="21">Business Class</option>
-                                <option value="28">Premium Economy</option>
-                                <option value="28">Economy Class</option>
+                                <option value="First Class">First Class</option>
+                                <option value="Business Class">Business Class</option>
+                                <option value="Premium Economy">Premium Economy</option>
+                                <option selected value="Economy Class">Economy Class</option>
                             </select>
                         </div>
                     </div>
                     <div class="md:flex w-full flex-row mt-2 mb:mt-0 md:px-3">
                         <div class="md:flex-1">
                             <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Airline
-                                Fare (Rs)</label>
+                                Fare (PKR)</label>
                             <input required type="number"
                                 class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="Airline Fare(RS)" value="78000" id="airlineFare">
@@ -372,28 +357,44 @@
                 <hr class="mb-4 mt-4  border-gray-500">
                 <div class="md:flex-1 mb-8">
                     <h2 class="text-xl font-bold mb-2 underline">Package Total Price</h2>
-                    <div class="md:flex w-full flex-row gap-4 mt-2 mb:mt-0 md:px-3">
+                    <div class="md:flex w-full flex-row mt-2 mb:mt-0 md:px-3">
                         <div class="md:flex-1">
-                            <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Makkah
-                                Price</label>
-                            <input type="number"
+                            <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Riyal Exchange
+                                Rate</label>
+                            <input required type="number"
                                 class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="" value="78" id="exchangeRate">
+                        </div>
+                        <div class="md:flex-1 md:pl-3 w-full">
+                            <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Visa
+                                Fee (Riyal)</label>
+                            <input required type="number" required
+                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="Visa Fee in Riyal" value="7890" id="visaFee">
+                        </div>
+                    </div>
+                    <div class="md:flex w-full flex-row gap-4 mt-2 mb:mt-0 md:px-3">
+                        <div class="md:flex-1 w-full">
+                            <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Makkah
+                                Price (PKR)</label>
+                            <input type="number"
+                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-600 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="0" id="makkahHPDisabled" disabled>
                         </div>
                         <p class="flex justify-center items-center text-2xl">+</p>
                         <div class="md:flex-1 w-full">
                             <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Madinah
-                                Price</label>
+                                Price (PKR)</label>
                             <input type="text"
-                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
+                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-600 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="0" id="madinahHPDisabled" disabled>
                         </div>
                         <p class="flex justify-center items-center text-2xl">+</p>
                         <div class="md:flex-1">
                             <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Visa
-                                Fee (Riyal)</label>
+                                Fee (PKR)</label>
                             <input type="text"
-                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
+                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-600 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="0" id="visaFeeDisabled" disabled>
                         </div>
                         <p class="flex justify-center items-center text-2xl">+</p>
@@ -403,9 +404,9 @@
                         <div class="md:flex-1">
 
                             <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Ariline
-                                Fares</label>
+                                Fares (PKR)</label>
                             <input type="text"
-                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
+                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-600 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="0" id="airlineFareDisabled" disabled>
                         </div>
                         <div class="">
@@ -436,9 +437,9 @@
 
                         <div class="md:flex-1 md:pl-3 w-full">
                             <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Total
-                                Package Amount</label>
+                                Package Amount (PKR)</label>
                             <input type="text" disabled
-                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
+                                class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-600 border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="0" value="0" id="totalAmount">
                         </div>
                     </div>
@@ -450,13 +451,19 @@
                             <input type="checkbox" id="visaCheck"
                                 class="block h-5 w-5 text-sm rounded-lg border bg-blue-700 focus:ring-4 outline-none focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
                             <label for="visaCheck"
-                                class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Visa</label>
+                                class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Visa Fee (PKR)</label>
                         </div>
                         <div class="md:w-96 w-full flex items-center gap-2 mt-4 mr-4">
                             <input type="checkbox" id="airlineCheck"
                                 class="block h-5 w-5 text-sm rounded-lg border bg-blue-700 focus:ring-4 outline-none focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
                             <label for="airlineCheck"
                                 class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Airline</label>
+                        </div>
+                        <div class="md:w-96 w-full flex items-center gap-2 mt-4 mr-4">
+                            <input type="checkbox" id="pesengerCheck" checked
+                                class="block h-5 w-5 text-sm rounded-lg border bg-blue-700 focus:ring-4 outline-none focus:ring-blue-500 focus:border-blue-500 cursor-pointer">
+                            <label for="pesengerCheck"
+                                class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Pesenger Name</label>
                         </div>
                     </div>
                      <div class="md:w-96 w-full mt-4">
@@ -474,7 +481,7 @@
                                 class="block h-5 w-5 text-sm rounded-lg outline-none bg-blue-700 focus:ring-4 border-none focus:ring-blue-500 focus:border-blue-500">
                             <input type="date" disabled id="expriyDateInput"
                                 class="block w-full py-2 ps-3 text-sm rounded-lg border bg-gray-700 text-white border-gray-600 placeholder-gray-400  outline-none focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Airline Fare(RS)" value="+923005115035">
+                                placeholder="Airline Fare(PKR)" value="+923005115035">
                         </div>
                     </div>
                    
