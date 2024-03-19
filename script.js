@@ -510,8 +510,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // logic for ticket fare or visa fee or madinah and makkah hotel price is = 0
     if (
       parseInt(airlineFare) === 0 ||
-      parseInt(visaFee) === 0 ||
-      parseInt(priceOfMakkahHotel) === 0 ||
+      (parseInt(visaFee) === 0 && parseInt(priceOfMakkahHotel) === 0) ||
       parseInt(priceOfMadinahHotel) === 0
     ) {
       alert("Please ensure that you have entered all the fields .");
