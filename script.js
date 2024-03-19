@@ -601,8 +601,8 @@ document.addEventListener("DOMContentLoaded", function () {
         `${selectedAirline ? `*Ticket Fare:* ${airlineFare} (PKR)` : ""}\n` +
         `${visaCheck ? `*Visa Fee:* ${visaCheck} (PKR)` : ""}\n` +
         `*No. Of Person:* ${numberOfPerson}\n` +
-        `*Total Package Amount:* ${totalAmount} (PKR)\n\n` +
-        `${responseText}\n` +
+        `*Total Package Amount:* ${totalAmount} (PKR)\n` +
+        `${responseText}\n\n` +
         `${expDate ? `*Package Expires on:* ${formatDate(expDate)}` : ""}`
     )}`;
 
