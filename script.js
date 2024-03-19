@@ -16,6 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Function to format date from mm/dd/yyyy to dd/mm/yyyy
+  function formatDate(inputDate) {
+    // Split the date into month, day, and year parts
+    var parts = inputDate.split("/");
+
+    // Reorder the parts to create the new date format
+    var formattedDate = parts[1] + "/" + parts[0] + "/" + parts[2];
+
+    return formattedDate;
+  }
+
   function updateNightsBasedOnPackageDays(selectedPackageDays) {
     let splitValue = Math.floor(selectedPackageDays / 2);
     document.getElementById("nightsInMakkah").value = splitValue;
@@ -290,8 +301,14 @@ document.addEventListener("DOMContentLoaded", function () {
       : parseInt(exchangeRate) * visaFeeValue;
 
     let totalAmount = makkahTotal + madinahTotal + visaPrice + airlineFareValue;
+
+    // Format the total amount with commas
+    let formattedTotalAmount = totalAmount
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
     // Update the value of the "Total Package Amount" input field
-    totalAmountDisabled.value = isNaN(totalAmount) ? "" : totalAmount;
+    totalAmountDisabled.value = isNaN(totalAmount) ? "" : formattedTotalAmount;
   }
 
   updateTotalAmount();
@@ -419,7 +436,13 @@ document.addEventListener("DOMContentLoaded", function () {
       .addEventListener("change", updatePassengerName);
     let expDate = document.getElementById("expriyDateInput").value;
     let totalAmount = document.getElementById("totalAmount").value;
-
+    function formatDate(date) {
+      const d = new Date(date);
+      const day = d.getDate().toString().padStart(2, "0");
+      const month = (d.getMonth() + 1).toString().padStart(2, "0");
+      const year = d.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
     // Store form data in local storage
 
     let formData = {
@@ -451,7 +474,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (expDate) {
-      formData["Expiry Date: "] = `${expDate}`;
+      formData["Expiry Date: "] = `${formatDate(expDate)}`;
     }
 
     let savedData = localStorage.getItem("formDataArray");
@@ -474,7 +497,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     No. Of Person: ${numberOfPerson}\n
     ${visaCheck ? `Visa Fee: ${visaCheck} (PKR)\n` : ""}
-    ${expDate ? `Expiry Date: ${expDate}\n` : ""}
+    ${expDate ? `Expiry Date: ${formatDate(expDate)}\n` : ""}
     Total Package Amount: ${totalAmount} (PKR)`
     )}`;
 
