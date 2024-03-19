@@ -554,10 +554,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }\n` +
         `*Airline:* ${airline} (${airlineClass})\n` +
         `${selectedAirline ? `*Airline Fare:* ${airlineFare} (PKR)` : ""}\n` +
-        `${visaCheck ? `Visa Fee: ${visaCheck} (PKR)` : ""}\n` +
-        `No. Of Person: ${numberOfPerson}\n` +
-        `Total Package Amount: ${totalAmount} (PKR)\n\n` +
-        `${expDate ? `Package Expires on: ${formatDate(expDate)}` : ""}`
+        `${visaCheck ? `*Visa Fee:* ${visaCheck} (PKR)` : ""}\n` +
+        `*No. Of Person:* ${numberOfPerson}\n` +
+        `*Total Package Amount:* ${totalAmount} (PKR)\n\n` +
+        `${expDate ? `*Package Expires on:* ${formatDate(expDate)}` : ""}`
     )}`;
 
     window.open(url, "_blank").focus();
